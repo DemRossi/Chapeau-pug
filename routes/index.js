@@ -8,4 +8,7 @@ router.get('/', function(req, res, next) {
 router.get('/login', (req, res,next)=>{
   res.render('login', {title: 'Chapeau - Log in'} )
 })
+router.get('/register', (req, res,next)=>{
+  res.render('register', {title: 'Chapeau - Register'} )
+})
 module.exports = router;

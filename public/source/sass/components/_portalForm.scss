@@ -1,10 +1,16 @@
 .form__wrapper{
     width: 40%;
-    height: 55%;
     background-color: $white;
     margin: 0 auto;
     border-radius: 15px;
     box-shadow: 0 0 10px $darkgrey;
+}
+
+.form__wrapper--login{
+    height: 55%;
+}
+.form__wrapper--register{
+    height: 65%;
 }
 .form__nav{
     width: 100%;
@@ -24,6 +30,11 @@
     text-align: center;
     background-color: $white;
     border: none;
+}
+.form__register{
+    width: 80%;
+    height: 60%;
+    overflow-y: auto;
 }
 .form--login{
     border-top-left-radius: 14px;

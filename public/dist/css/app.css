@@ -23,6 +23,24 @@ form {
 .btn-success {
   background-color: #21A675; }
 
+.scrollbar {
+  padding-right: 15px; }
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5; }
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5; }
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #707070;
+  margin-left: 30px; }
+
 .portal {
   width: 100%;
   height: 100%;
@@ -40,11 +58,16 @@ form {
 
 .form__wrapper {
   width: 40%;
-  height: 55%;
   background-color: #dddddd;
   margin: 0 auto;
   border-radius: 15px;
   box-shadow: 0 0 10px #3D3D3D; }
+
+.form__wrapper--login {
+  height: 55%; }
+
+.form__wrapper--register {
+  height: 65%; }
 
 .form__nav {
   width: 100%;
@@ -61,6 +84,11 @@ form {
   text-align: center;
   background-color: #dddddd;
   border: none; }
+
+.form__register {
+  width: 80%;
+  height: 60%;
+  overflow-y: auto; }
 
 .form--login {
   border-top-left-radius: 14px; }

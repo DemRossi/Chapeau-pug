@@ -3,18 +3,15 @@ extends layout
 block content
   div.portal
     div.portal__filter
-      div.form__wrapper
+      div.form__wrapper.form__wrapper--login
         div.form__nav
           a(href="/login", class="btn btn-success form__nav_item form__nav_item--active form--login") Login
           a(href="/register", class="btn btn-success form__nav_item form--register") Register
         form
           .form-group
-            label(for='exampleInputEmail1') Email address
-            input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp')
+            label(for='email') Email address or username
+            input#email.form-control(type='email', aria-describedby='emailHelp')
           .form-group
-            label(for='exampleInputPassword1') Password
-            input#exampleInputPassword1.form-control(type='password')
-          //- .form-group.form-check
-            //- input#exampleCheck1.form-check-input(type='checkbox')
-            //- label.form-check-label(for='exampleCheck1') Check me out
+            label(for='password') Password
+            input#password1.form-control(type='password')
           button.btn.btn-success(type='submit') Submit

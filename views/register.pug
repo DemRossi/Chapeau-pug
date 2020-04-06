@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  div.portal
+    div.portal__filter
+      div.form__wrapper.form__wrapper--register
+        div.form__nav
+          a(href="/login", class="btn btn-success form__nav_item form--login") Login
+          a(href="/register", class="btn btn-success form__nav_item form__nav_item--active form--register") Register
+        form.form__register.scrollbar
+          .form-group
+            label(for='name') Name
+            input#email.form-control(type='text')
+          .form-group
+            label(for='username') Username
+            input#password1.form-control(type='password')
+          .form-group
+            label(for='email') Email address
+            input#email.form-control(type='email', aria-describedby='emailHelp')
+          .form-group
+            label(for='password') Password
+            input#password1.form-control(type='password')
+          .form-group
+            label(for='passwordConfirmation') Confirm password
+            input#password1.form-control(type='password')
+          button.btn.btn-success(type='submit') Submit
