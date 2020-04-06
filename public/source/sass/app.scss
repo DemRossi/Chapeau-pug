@@ -1,3 +1,4 @@
-body{
-    background-color: white;
-}
+// This file will only be used to import all other scss files
+@import 'variables';
+@import 'components/reset';
+@import 'components/main';
