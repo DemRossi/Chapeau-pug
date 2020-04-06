@@ -1,0 +1,15 @@
+.portal{
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../images/chapeau.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.portal__filter{
+    width: 100%;
+    height: 100%;
+    background: rgb(98,98,98);
+    background: linear-gradient(90deg, rgba(61,61,61,0.8) 0%, rgba(98, 98, 98, 0.5) 50%, rgba(61, 61, 61, 0.8) 100%);  
+    padding-top: 20%;
+}

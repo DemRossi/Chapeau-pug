@@ -1,1 +1,73 @@
-*{margin:0;padding:0;box-sizing:border-box}body{width:100vw;height:100vh;border:1px solid black}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0; }
+
+.container {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+
+form {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 50px; }
+
+.btn-success {
+  background-color: #21A675; }
+
+.portal {
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../images/chapeau.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; }
+
+.portal__filter {
+  width: 100%;
+  height: 100%;
+  background: #626262;
+  background: linear-gradient(90deg, rgba(61, 61, 61, 0.8) 0%, rgba(98, 98, 98, 0.5) 50%, rgba(61, 61, 61, 0.8) 100%);
+  padding-top: 20%; }
+
+.form__wrapper {
+  width: 40%;
+  height: 55%;
+  background-color: #dddddd;
+  margin: 0 auto;
+  border-radius: 15px;
+  box-shadow: 0 0 10px #3D3D3D; }
+
+.form__nav {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between; }
+
+.form__nav_item {
+  width: 50%;
+  height: 60px;
+  border-radius: 0px;
+  color: #3D3D3D;
+  font-size: 1.5em;
+  text-align: center;
+  background-color: #dddddd;
+  border: none; }
+
+.form--login {
+  border-top-left-radius: 14px; }
+
+.form--register {
+  border-top-right-radius: 14px; }
+
+.form__nav_item--active {
+  color: #dddddd;
+  background-color: #21A675; }

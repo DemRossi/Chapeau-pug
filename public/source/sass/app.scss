@@ -1,4 +1,11 @@
 // This file will only be used to import all other scss files
 @import 'variables';
 @import 'components/reset';
+
+// Main css
 @import 'components/main';
+
+// Components css
+@import 'components/buttons';
+@import 'components/portal';
+@import 'components/portalForm';

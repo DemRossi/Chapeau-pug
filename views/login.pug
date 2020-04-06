@@ -1,6 +1,20 @@
 extends layout
 
 block content
-  div.container
-    h1= title
-    p Welcome to #{title}
+  div.portal
+    div.portal__filter
+      div.form__wrapper
+        div.form__nav
+          a(href="/login", class="btn btn-success form__nav_item form__nav_item--active form--login") Login
+          a(href="/register", class="btn btn-success form__nav_item form--register") Register
+        form
+          .form-group
+            label(for='exampleInputEmail1') Email address
+            input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp')
+          .form-group
+            label(for='exampleInputPassword1') Password
+            input#exampleInputPassword1.form-control(type='password')
+          //- .form-group.form-check
+            //- input#exampleCheck1.form-check-input(type='checkbox')
+            //- label.form-check-label(for='exampleCheck1') Check me out
+          button.btn.btn-success(type='submit') Submit
