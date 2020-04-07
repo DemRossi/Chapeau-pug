@@ -6,6 +6,7 @@
 body {
   width: 100vw;
   height: 100vh;
+  font-family: 'Imprima', sans-serif;
   margin: 0;
   padding: 0; }
 
@@ -21,6 +22,15 @@ form {
 
 .btn-success {
   background-color: #21A675; }
+
+.btn-success:hover {
+  background-color: #1d9166; }
+
+.btn-success:not(:disabled):not(.disabled):active {
+  background-color: #197b57; }
+
+.btn-success:focus {
+  background-color: #197b57; }
 
 .btn--new {
   background-color: #F2B90F;
