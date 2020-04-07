@@ -1,0 +1,16 @@
+//- header.pug
+header.header
+  .logo--wrapper
+    .logo--img
+    // <div class="logo--name">Chapeau</div>
+  .nav
+    a.nav-link.link-home(href='') Home
+    // <a class="nav-link link-achievements" href="">Achievements</a>
+    a.nav-link.link-rules(href='') Rules
+    // <a class="nav-link link-dropdown" href="">Dropdown</a>
+    .dropdown.nav-link.link-dropdown
+      a.profile--img.btn(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+      .dropdown-menu(aria-labelledby='dropdownMenuLink')
+        a.dropdown-item(href='#') Profile
+        hr
+        a.dropdown-item(href='#') Logout
