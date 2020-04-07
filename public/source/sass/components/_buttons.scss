@@ -1,3 +1,15 @@
 .btn-success{
     background-color: $green;
 }
+.btn--new{
+    background-color: $yellow;
+    color: white;
+    border-radius: 5px;
+    // border: none;
+}
+.btn--new:hover{
+    color:white;
+}
+.btn--join{
+    width: 100%;
+}

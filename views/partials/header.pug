@@ -1,16 +1,14 @@
 //- header.pug
 header.header
-  .logo--wrapper
-    .logo--img
-    // <div class="logo--name">Chapeau</div>
+  .logo__wrapper
+    .logo__img
   .nav
-    a.nav-link.link-home(href='') Home
-    // <a class="nav-link link-achievements" href="">Achievements</a>
-    a.nav-link.link-rules(href='') Rules
-    // <a class="nav-link link-dropdown" href="">Dropdown</a>
-    .dropdown.nav-link.link-dropdown
-      a.profile--img.btn(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-      .dropdown-menu(aria-labelledby='dropdownMenuLink')
+    a.nav__link.link__home(href='') Home
+    //- a.nav-link.link-achievements(href='') Achievements
+    a.nav__link.link__rules(href='') Rules
+    .dropdown.nav__link.link__dropdown
+      a.link__profile_img.btn(href='#', role='button', data-toggle='dropdown', data-display="static", aria-haspopup='true', aria-expanded='false')
+      .dropdown-menu.dropdown-menu-center(aria-labelledby='dropdownMenuLink')
         a.dropdown-item(href='#') Profile
-        hr
+        div.dropdown-divider
         a.dropdown-item(href='#') Logout

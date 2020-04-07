@@ -2,3 +2,26 @@ extends layout
 
 block content
   include ../views/partials/header
+
+  .content__container
+    .content__btn_wrapper
+      a.btn.btn-warning.btn--new(type='button', href='#') Create new lobby
+    .content__wrapper
+      .content__list
+        h2.content__list_name LobbyName
+        .content__list_amountPlayers
+          h5
+            span.content__list_amountPlayers_amount 5
+            |  / 
+            span.content__list_amountPlayers_many 6
+            |  players inside
+        .content__list_playersInside
+          h6.content__list_playersInside_peopleTitle People in lobby:
+          .h6.content__list_profilepic_wrapper
+            .content__list_profilepic
+            .content__list_profilepic
+            .content__list_profilepic
+            .content__list_profilepic
+            .content__list_profilepic
+        .content__btn
+          button.btn.btn-success.btn--join(type='button') Join
