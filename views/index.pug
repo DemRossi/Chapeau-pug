@@ -4,10 +4,12 @@ block content
   include ../views/partials/header
 
   .content__container
+    .content__wrapper--top-left
+        a.btn.btn-danger.btn--back(type='button', href='/') Leave lobby
     .content__wrapper--top-middle
       a.btn.btn-warning.btn--new(type='button', href='/create') Create new lobby
     .content__wrapper--bottom-middle
-      .content__list
+      .content__list.content__list--home
         h2.content__list_name LobbyName
         .content__list_amountPlayers
           h5
@@ -17,11 +19,11 @@ block content
             |  players inside
         .content__list_playersInside
           h6.content__list_playersInside_peopleTitle People in lobby:
-          .h6.content__list_profilepic_wrapper
-            .content__list_profilepic
-            .content__list_profilepic
-            .content__list_profilepic
-            .content__list_profilepic
-            .content__list_profilepic
+          .h6.content__list_profilepic_wrapper--small
+            .content__list_profilepic--small
+            .content__list_profilepic--small
+            .content__list_profilepic--small
+            .content__list_profilepic--small
+            .content__list_profilepic--small
         .content__btn
           button.btn.btn-success.btn--join(type='button') Join

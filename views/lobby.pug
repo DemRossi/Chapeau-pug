@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  include ../views/partials/header
+
+  .content__container
+    .content__wrapper--top-left
+        a.btn.btn-danger.btn--back(type='button', href='/') Leave lobby
+    .content__wrapper--top-middle
+      h3 Lobby: Lobby name
+    .content__wrapper--top-right
+      a.btn.btn-success(type='button', href='#') Ready Up
+    .content__wrapper--bottom-middle
+      .content__list.content__list--lobby
+        .content__list_profilepic_wrapper--big.content__list_profilepic--big
+        
+
+        //- h2.content__list_name LobbyName
+        //- .content__list_amountPlayers
+        //-   h5
+        //-     span.content__list_amountPlayers_amount 5
+        //-     |  / 
+        //-     span.content__list_amountPlayers_many 6
+        //-     |  players inside
+        //- .content__list_playersInside
+        //-   h6.content__list_playersInside_peopleTitle People in lobby:
+        //-   .h6.content__list_profilepic_wrapper
+        //-     .content__list_profilepic
+        //-     .content__list_profilepic
+        //-     .content__list_profilepic
+        //-     .content__list_profilepic
+        //-     .content__list_profilepic
+        //- .content__btn
+        //-   button.btn.btn-success.btn--join(type='button') Join
