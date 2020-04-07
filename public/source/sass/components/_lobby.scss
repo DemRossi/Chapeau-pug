@@ -17,3 +17,23 @@
     background-repeat: no-repeat;
     background-position: center center;
 }
+.content__list_username{
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+.content__list_amountPlays{
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    padding-left: 10px;
+}
+.content__list_amountWins{
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    padding-left: 10px;
+}
