@@ -4,13 +4,14 @@
     margin: 0 auto;
     border-radius: 15px;
     box-shadow: 0 0 10px $darkgrey;
+    padding-bottom: 30px;
 }
 
 .form__wrapper--login{
-    height: 55%;
+    max-height: 65%;
 }
 .form__wrapper--register{
-    height: 65%;
+    height: 58%;
 }
 .form__nav{
     width: 100%;
@@ -33,7 +34,7 @@
 }
 .form__register{
     width: 80%;
-    height: 60%;
+    height: 70%;
     overflow-y: auto;
 }
 .form--login{
