@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  include ../views/partials/header
+
+  .content__container
+    .content__wrapper--top-left
+        a.btn.btn-danger.btn--back(type='button', href='#') Back
+    .content__wrapper--top-middle
+        h3 Create a new lobby
+    .content__wrapper--bottom-middle
+        form
+            .form-group
+              label(for='LobbyName') Name of the lobby
+              input#LobbyName.form-control(type='text')
+            .form-group
+              label(for='PeopleAmount') Amount of people
+              select#PeopleAmount.form-control
+                option 3
+                option 4
+                option 5
+                option 6
+            .form-check
+                input#private.form-check-input(type='checkbox', value='')
+                label.form-check-label(for='private') Private?
+            .form-group
+                label(for='password') Password
+                input#password.form-control(type='password')
+            .form-group
+                label(for='passwordConfirmation') Confirm password
+                input#password.form-control(type='password')
+            //- h5 Basic rules
+            button.btn.btn-success(type='submit') Submit
+        

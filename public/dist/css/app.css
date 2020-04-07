@@ -33,6 +33,10 @@ form {
 .btn--join {
   width: 100%; }
 
+.btn--back {
+  color: white;
+  border-radius: 5px; }
+
 .scrollbar {
   padding-right: 15px; }
 
@@ -175,7 +179,16 @@ form {
   grid-template-columns: auto 50% auto;
   grid-template-rows: 75px 5px auto; }
 
-.content__btn_wrapper {
+.content__wrapper--top-left {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  justify-self: start;
+  align-self: center;
+  margin-left: 50px; }
+
+.content__wrapper--top-middle {
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 1;
@@ -183,7 +196,7 @@ form {
   justify-self: center;
   align-self: center; }
 
-.content__wrapper {
+.content__wrapper--bottom-middle {
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 3;

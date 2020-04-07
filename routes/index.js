@@ -11,4 +11,7 @@ router.get('/login', (req, res,next)=>{
 router.get('/register', (req, res,next)=>{
   res.render('register', {title: 'Chapeau - Register'} )
 })
+router.get('/create', (req, res,next)=>{
+  res.render('create', {title: 'Chapeau - Create Lobby'} )
+})
 module.exports = router;
