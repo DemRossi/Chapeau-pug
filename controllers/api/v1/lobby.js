@@ -1,22 +1,14 @@
 /* Controller */
-let mongoose = require('mongoose');
-let Schema = mongoose.Schema;
-
-let LobbySchema = new Schema({
-    lobbyname: String,
-    owner: String,
-    playersamount: Number
-});
-const Lobby = mongoose.model('Lobbies', LobbySchema);
+const Lobby = require('../../../models/lobby');
 
 let getAll = (req, res)=>{
     Lobby.find({}, (err, docs)=>{
-        // if( err){
-        //     res.json({
-        //         "status": "error",
-        //         "message": err.message
-        //     });
-        // }
+        if( err){
+            res.json({
+                "status": "error",
+                "message": err.message
+            });
+        }
         //if no errors, go ahead and do your job!
         if(!err){
             res.json({
@@ -29,10 +21,18 @@ let getAll = (req, res)=>{
 
 let create = (req,res)=>{
     let lobby = new Lobby();
-    lobby.lobbyname = "Mijn tweede lobby";
-    lobby.owner = "Weske";
-    lobby.playersamount = 6;
+    
+    lobby.lobbyname = req.body.lobbyname;
+    lobby.owner = req.body.owner;
+    lobby.playersamount = req.body.playersamount;
+
     lobby.save( (err, doc)=>{
+        if( err){
+            res.json({
+                "status": "error",
+                "message": err.message
+            });
+        }
         if(!err){
             res.json({ 
                 "status": "success",
