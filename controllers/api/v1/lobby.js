@@ -1,5 +1,5 @@
 /* Controller */
-const Lobby = require('../../../models/lobby');
+const Lobby = require('../../../models/Lobby');
 
 let getAll = (req, res)=>{
     Lobby.find({}, (err, docs)=>{

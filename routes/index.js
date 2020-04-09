@@ -8,8 +8,8 @@ router.get('/', function(req, res, next) {
 router.get('/login', (req, res,next)=>{
   res.render('login', {title: 'Chapeau - Log in'} )
 })
-router.get('/register', (req, res,next)=>{
-  res.render('register', {title: 'Chapeau - Register'} )
+router.get('/signup', (req, res,next)=>{
+  res.render('signup', {title: 'Chapeau - signup'} )
 })
 router.get('/create', (req, res,next)=>{
   res.render('create', {title: 'Chapeau - Create Lobby'} )
