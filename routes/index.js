@@ -1,20 +1,20 @@
-const express = require('express');
-const router = express.Router();
+const express = require("express")
+const router = express.Router()
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Chapeau - Home' })
-});
-router.get('/login', (req, res,next)=>{
-  res.render('login', {title: 'Chapeau - Log in'} )
+router.get("/", function (req, res, next) {
+  res.render("index", { title: "Chapeau - Home" })
 })
-router.get('/signup', (req, res,next)=>{
-  res.render('signup', {title: 'Chapeau - signup'} )
+router.get("/login", (req, res, next) => {
+  res.render("login", { title: "Chapeau - Log in" })
 })
-router.get('/create', (req, res,next)=>{
-  res.render('create', {title: 'Chapeau - Create Lobby'} )
+router.get("/signup", (req, res, next) => {
+  res.render("signup", { title: "Chapeau - signup" })
 })
-router.get('/lobby', (req, res,next)=>{
-  res.render('lobby', {title: 'Chapeau - Inside lobby'} )
+router.get("/create", (req, res, next) => {
+  res.render("create", { title: "Chapeau - Create Lobby" })
 })
-module.exports = router;
+router.get("/lobby", (req, res, next) => {
+  res.render("lobby", { title: "Chapeau - Inside lobby" })
+})
+module.exports = router
