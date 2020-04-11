@@ -19,7 +19,6 @@ app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "pug")
 
 // mongoose setup
-app.use(cors())
 dotenv.config()
 let connectionString = process.env.MONGOCON_URI
 mongoose.set("useCreateIndex", true)
@@ -35,6 +34,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, "public")))
 
+app.use(cors())
 app.use("/", indexRouter)
 app.use("/users", usersRouter)
 app.use("/api/v1/lobby", apiLobbyRouter)

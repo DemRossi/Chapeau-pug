@@ -9,9 +9,11 @@ block content
           a(href="/signup", class="btn btn-success form__nav_item form--register") Sign up
         form
           .form-group
-            label(for='email') Email address or username
-            input#email.form-control(type='email', aria-describedby='emailHelp')
+            label(for='username') Username
+            input#username.form-control(type='text')
           .form-group
             label(for='password') Password
             input#password.form-control(type='password')
-          button.btn.btn-success(type='submit') Login
+          input.btn.btn-success.btn--login(type='submit' value='login')
+
+  script(src="javascripts/ajax_L.js")
