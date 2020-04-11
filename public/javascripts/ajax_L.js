@@ -22,9 +22,9 @@ let loginBtn = document
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        "username": username,
-        "password": password,
-      })
+        username: username,
+        password: password,
+      }),
     })
       .then((response) => {
         console.log("response")
@@ -55,5 +55,5 @@ let loginBtn = document
           alert("login failed")
         }
       })
-      e.preventDefault();
+    e.preventDefault()
   })

@@ -1,4 +1,6 @@
-const User = require("../../../models/User")
+const User = require('../../../models/User')
+const dotenv = require('dotenv')
+const jwt = require('jsonwebtoken')
 
 const signup = async (req, res, next) => {
   let name = req.body.name
@@ -15,13 +17,25 @@ const signup = async (req, res, next) => {
   await user
     .save()
     .then((result) => {
+      dotenv.config()
+      let secret = process.env.JWT_SECRET
+      let token = jwt.sign(
+        {
+          uid: result._id,
+        },
+        secret
+      )
+
       res.json({
-        status: "success",
+        status: 'success',
+        data: {
+          token: token,
+        },
       })
     })
     .catch((error) => {
       res.json({
-        status: "error",
+        status: 'error',
       })
     })
 }
@@ -30,7 +44,7 @@ const login = async (req, res, next) => {
   const user = await User.authenticate()(req.body.username, req.body.password)
     .then((result) => {
       res.json({
-        status: "success",
+        status: 'success',
         data: {
           user: result,
         },
@@ -38,7 +52,7 @@ const login = async (req, res, next) => {
     })
     .catch((error) => {
       res.json({
-        status: "error",
+        status: 'error',
         message: error,
       })
     })
