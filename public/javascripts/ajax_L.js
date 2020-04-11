@@ -1,10 +1,9 @@
 let loginBtn = document
-  .querySelector(".btn--login")
-  .addEventListener("click", (e) => {
-    let username = document.querySelector("#username").value
-    let password = document.querySelector("#password").value
-    console.log(username)
-    console.log(password)
+  .querySelector('.btn--login')
+  .addEventListener('click', (e) => {
+    let username = document.querySelector('#username').value
+    let password = document.querySelector('#password').value
+
     // //init primus websocket on this very own page
     // this.primus = Primus.connect("/", {
     //     reconnect: {
@@ -13,13 +12,12 @@ let loginBtn = document
     //       , retries: 10 // Number: How many times we should try to reconnect.
     //     }
     // });
-    // console.log("test")
 
     //do login fetch
-    fetch("http://localhost:3000/users/login", {
-      method: "post",
+    fetch('http://localhost:3000/users/login', {
+      method: 'post',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         username: username,
@@ -27,13 +25,11 @@ let loginBtn = document
       }),
     })
       .then((response) => {
-        console.log("response")
         return response.json()
       })
       .then((json) => {
-        if (json.status === "success") {
-          console.log("success")
-          alert("login success")
+        if (json.status === 'success') {
+          alert('login success')
           //send live user over websockets
           //   this.primus.write({
           //     action: "liveUser",
@@ -41,18 +37,18 @@ let loginBtn = document
           //   })
 
           //save variables from json result and store them in localstorage + redirect
-          // let token = json.data.token
+          let token = json.data.token
           // let user_id = json.data.user_id
           // let username = json.data.username
 
-          // localStorage.setItem("token", token)
+          localStorage.setItem('token', token)
           // localStorage.setItem("user_id", user_id)
           // localStorage.setItem("username", username)
 
           // window.location.replace("http://www.w3schools.com")
-          window.location.href = "http://localhost:3000"
+          window.location.href = '/'
         } else {
-          alert("login failed")
+          alert('login failed')
         }
       })
     e.preventDefault()

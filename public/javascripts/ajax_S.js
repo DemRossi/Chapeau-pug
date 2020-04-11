@@ -6,10 +6,6 @@ let SignUpBtn = document
     let email = document.querySelector('#email').value
     let password = document.querySelector('#password').value
 
-    console.log(name)
-    console.log(email)
-    console.log(username)
-    console.log(password)
     // //init primus websocket on this very own page
     // this.primus = Primus.connect("/", {
     //     reconnect: {
@@ -34,7 +30,6 @@ let SignUpBtn = document
       }),
     })
       .then((response) => {
-        console.log('response')
         return response.json()
       })
       .then((json) => {
@@ -57,7 +52,7 @@ let SignUpBtn = document
           // localStorage.setItem("username", username)
 
           // window.location.replace("http://www.w3schools.com")
-          window.location.href = 'http://localhost:3000'
+          window.location.href = '/'
         } else {
           alert('login failed')
         }

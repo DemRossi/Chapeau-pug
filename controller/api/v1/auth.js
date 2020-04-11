@@ -2,6 +2,8 @@ const User = require('../../../models/User')
 const dotenv = require('dotenv')
 const jwt = require('jsonwebtoken')
 
+dotenv.config()
+
 const signup = async (req, res, next) => {
   let name = req.body.name
   let username = req.body.username
@@ -17,11 +19,11 @@ const signup = async (req, res, next) => {
   await user
     .save()
     .then((result) => {
-      dotenv.config()
       let secret = process.env.JWT_SECRET
       let token = jwt.sign(
         {
           uid: result._id,
+          username: result.username,
         },
         secret
       )
@@ -43,10 +45,24 @@ const signup = async (req, res, next) => {
 const login = async (req, res, next) => {
   const user = await User.authenticate()(req.body.username, req.body.password)
     .then((result) => {
-      res.json({
+      if (!result.user) {
+        return res.json({
+          status: 'failed',
+          message: 'Login failed',
+        })
+      }
+      let secret = process.env.JWT_SECRET
+      let token = jwt.sign(
+        {
+          uid: result.user._id,
+          username: result.user.username,
+        },
+        secret
+      )
+      return res.json({
         status: 'success',
         data: {
-          user: result,
+          token: token,
         },
       })
     })
