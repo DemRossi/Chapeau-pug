@@ -29,7 +29,6 @@ let loginBtn = document
       })
       .then((json) => {
         if (json.status === 'success') {
-          alert('login success')
           //send live user over websockets
           //   this.primus.write({
           //     action: "liveUser",

@@ -34,8 +34,6 @@ let SignUpBtn = document
       })
       .then((json) => {
         if (json.status == 'success') {
-          console.log('success')
-          alert('Sign Up success')
           //send live user over websockets
           //   this.primus.write({
           //     action: "liveUser",
