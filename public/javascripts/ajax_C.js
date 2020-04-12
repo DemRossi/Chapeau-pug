@@ -23,7 +23,9 @@ let createBtn = document
       })
       .then((json) => {
         if (json.status == 'success') {
-          alert('lobby created')
+          console.log(json.data)
+          // take lobby id
+          //redirect to /lobby/:id
         }
       })
     e.preventDefault()
