@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  script(src="javascripts/t_checker.js")
   include ../views/partials/header
 
   .content__container
@@ -30,5 +31,6 @@ block content
             //-     label(for='passwordConfirmation') Confirm password
             //-     input#password.form-control(type='password')
             //- h5 Basic rules
-            button.btn.btn-success(type='submit') Submit
+            input.btn.btn-success.btn--create(type='submit' value='Make lobby') 
+  script(src="javascripts/ajax_C.js")
         

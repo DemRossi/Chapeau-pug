@@ -1,6 +1,6 @@
 fetch('http://localhost:3000/api/v1/lobby', {
+  method: 'get',
   headers: {
-    method: 'get',
     Accept: 'application/json, text/plain, */*',
     'Content-Type': 'application/json',
     Authorization: 'Bearer ' + localStorage.getItem('token'),

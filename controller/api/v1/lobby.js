@@ -1,18 +1,18 @@
 /* Controller */
-const Lobby = require("../../../models/Lobby")
+const Lobby = require('../../../models/Lobby')
 
 let getAll = (req, res) => {
   Lobby.find({}, (err, docs) => {
     if (err) {
       res.json({
-        status: "error",
+        status: 'error',
         message: err.message,
       })
     }
     //if no errors, go ahead and do your job!
     if (!err) {
       res.json({
-        status: "success",
+        status: 'success',
         data: docs,
       })
     }
@@ -29,21 +29,19 @@ let create = (req, res) => {
   lobby.save((err, doc) => {
     if (err) {
       res.json({
-        status: "error",
+        status: 'error',
         message: err.message,
       })
     }
     if (!err) {
       res.json({
-        status: "success",
+        status: 'success',
         data: {
           lobby: doc,
         },
       })
     }
   })
-
-  console.log(res)
 }
 
 module.exports.getAll = getAll

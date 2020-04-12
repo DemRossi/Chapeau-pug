@@ -17,7 +17,7 @@ let SignUpBtn = document
     // console.log("test")
 
     //do sign up fetch
-    fetch('http://localhost:3000/users/signup', {
+    fetch('/users/signup', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
