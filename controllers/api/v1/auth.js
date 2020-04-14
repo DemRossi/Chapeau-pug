@@ -93,7 +93,7 @@ let check = (req, res) => {
     }
     //if no errors, go ahead and do your job!
     if (!err) {
-      console.log(doc)
+      // console.log(doc)
       res.json({
         status: 'success',
         data: doc,
