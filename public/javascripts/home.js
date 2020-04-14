@@ -16,5 +16,7 @@ fetch('http://localhost:3000/api/v1/lobby', {
     // console.log('error!!!')
     // Delete existing tokens and redirect
     localStorage.removeItem('token')
+    localStorage.removeItem('user_id')
+    localStorage.removeItem('username')
     window.location.href = '/login'
   })

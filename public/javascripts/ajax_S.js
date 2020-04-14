@@ -42,14 +42,13 @@ let SignUpBtn = document
 
           //save variables from json result and store them in localstorage + redirect
           let token = json.data.token
-          // let user_id = json.data.user_id
-          // let username = json.data.username
+          let user_id = json.data.user_id
+          let username = json.data.username
 
           localStorage.setItem('token', token)
-          // localStorage.setItem("user_id", user_id)
-          // localStorage.setItem("username", username)
+          localStorage.setItem('user_id', user_id)
+          localStorage.setItem('username', username)
 
-          // window.location.replace("http://www.w3schools.com")
           window.location.href = '/'
         } else {
           alert('login failed')

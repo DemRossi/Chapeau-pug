@@ -60,4 +60,11 @@ app.use(function (err, req, res, next) {
   res.render('error')
 })
 
+// catch 401 and redirect to login
+// app.use(function (err, req, res, next) {
+//   if (401 == err.status) {
+//     console.log('401 error test')
+//     res.redirect('/login')
+//   }
+// })
 module.exports = app

@@ -27,11 +27,14 @@ const signup = async (req, res, next) => {
         },
         secret
       )
-
+      let user_id = result._id
+      let username = result.username
       res.json({
         status: 'success',
         data: {
           token: token,
+          user_id: user_id,
+          username: username,
         },
       })
     })
@@ -59,10 +62,14 @@ const login = async (req, res, next) => {
         },
         secret
       )
+      let user_id = result.user._id
+      let username = result.user.username
       return res.json({
         status: 'success',
         data: {
           token: token,
+          user_id: user_id,
+          username: username,
         },
       })
     })
@@ -74,5 +81,27 @@ const login = async (req, res, next) => {
     })
 }
 
+let check = (req, res) => {
+  let username = req.body.username
+  console.log(username)
+  User.findOne({ username: username }, (err, doc) => {
+    if (err) {
+      res.json({
+        status: 'error',
+        message: err.message,
+      })
+    }
+    //if no errors, go ahead and do your job!
+    if (!err) {
+      console.log(doc)
+      res.json({
+        status: 'success',
+        data: doc,
+      })
+    }
+  })
+}
+
 module.exports.signup = signup
 module.exports.login = login
+module.exports.check = check

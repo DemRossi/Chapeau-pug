@@ -14,7 +14,7 @@ let createBtn = document
       },
       body: JSON.stringify({
         lobbyname: lobbyName,
-        owner: 'Weske',
+        owner: localStorage.getItem('username'),
         playersamount: parseInt(playersAmount),
       }),
     })

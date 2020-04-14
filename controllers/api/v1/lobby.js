@@ -22,7 +22,7 @@ let getAll = (req, res) => {
 // GET callback for getting a SPECIFIC Lobby by it's ID
 let getLobbyById = (req, res) => {
   let lobbyId = req.params.id
-  console.log(lobbyId)
+  // console.log(lobbyId)
 
   Lobby.findById({ _id: lobbyId }, (err, doc) => {
     if (err) {

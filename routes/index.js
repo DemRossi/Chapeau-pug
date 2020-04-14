@@ -21,7 +21,7 @@ router.get(
 /* GET create page. */
 router.get(
   '/create',
-  // passport.authenticate('jwt', { session: false }),
+  // passport.authenticate('jwt', { session: false, failureRedirect: '/login' }),
   (req, res, next) => {
     res.render('create', { title: 'Chapeau - Create Lobby' })
   }
