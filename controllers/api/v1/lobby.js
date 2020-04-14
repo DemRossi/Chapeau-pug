@@ -19,6 +19,28 @@ let getAll = (req, res) => {
   })
 }
 
+// GET callback for getting a SPECIFIC Lobby by it's ID
+let getLobbyById = (req, res) => {
+  let lobbyId = req.params.id
+  console.log(lobbyId)
+
+  Lobby.findById({ _id: lobbyId }, (err, doc) => {
+    if (err) {
+      res.json({
+        status: 'error',
+        message: err.message,
+      })
+    }
+    //if no errors, go ahead and do your job!
+    if (!err) {
+      res.json({
+        status: 'success',
+        data: doc,
+      })
+    }
+  })
+}
+
 let create = (req, res) => {
   let lobby = new Lobby()
 
@@ -46,3 +68,4 @@ let create = (req, res) => {
 
 module.exports.getAll = getAll
 module.exports.create = create
+module.exports.getLobbyById = getLobbyById

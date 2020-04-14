@@ -13,7 +13,7 @@ fetch('http://localhost:3000/api/v1/lobby', {
     console.log(json)
   })
   .catch((err) => {
-    console.log('error!!!')
+    // console.log('error!!!')
     // Delete existing tokens and redirect
     localStorage.removeItem('token')
     window.location.href = '/login'
