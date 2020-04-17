@@ -1,5 +1,5 @@
 if (!localStorage.getItem('token')) {
-  console.log('no token')
+  // console.log('no token')
   window.location.href = '/login'
 } else {
   fetch('http://localhost:3000/users/check', {
@@ -22,7 +22,7 @@ if (!localStorage.getItem('token')) {
     })
     .catch((err) => {
       console.log(err)
-      // Delete existing tokens and redirect
+      // Delete existing data and redirect
       // console.log('invalid token')
       localStorage.removeItem('token')
       localStorage.removeItem('user_id')
