@@ -42,7 +42,7 @@ fetch('http://localhost:3000/api/v1/lobby', {
         </div>
 
         <div class="content__btn">
-          <button class="btn btn-success btn--join">Join</button>
+          <a href="/lobby/${json.data[i]._id}" class="btn btn-success btn--join">Join</a>
         </div>
         `
         lobbyWrapper.innerHTML = lobbyTemplate
