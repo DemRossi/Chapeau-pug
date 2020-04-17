@@ -1,5 +1,6 @@
 /* Controller */
 const Lobby = require('../../../models/Lobby')
+const isEmpty = require('is-empty')
 
 let getAll = (req, res) => {
   Lobby.find({}, (err, docs) => {
@@ -11,10 +12,17 @@ let getAll = (req, res) => {
     }
     //if no errors, go ahead and do your job!
     if (!err) {
-      res.json({
-        status: 'success',
-        data: docs,
-      })
+      if (isEmpty(docs)) {
+        res.json({
+          status: 'failed',
+          message: `No lobbies found! If you want to play you'll need to create a lobby.`,
+        })
+      } else {
+        res.json({
+          status: 'success',
+          data: docs,
+        })
+      }
     }
   })
 }
@@ -47,6 +55,7 @@ let create = (req, res) => {
   lobby.lobbyname = req.body.lobbyname
   lobby.owner = req.body.owner
   lobby.playersamount = req.body.playersamount
+  lobby.playersinside = req.body.playersinside
 
   lobby.save((err, doc) => {
     if (err) {

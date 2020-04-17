@@ -242,6 +242,11 @@ form {
   align-self: center;
   font-size: 1.4em; }
 
+.content__list_error {
+  margin-top: 20px;
+  font-size: 1.8em;
+  text-align: center; }
+
 .content__list_amountPlayers {
   grid-column-start: 4;
   grid-column-end: 5;
