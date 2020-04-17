@@ -25,7 +25,7 @@ fetch('http://localhost:3000/api/v1/lobby', {
           <h5>
             <span class="content__list_amountPlayers_amount">5</span>
             /
-            <span class="content__list_amountPlayers_many">${json.data[i].playersamount}</span>
+            <span class="content__list_amountPlayers_many">6</span>
             players inside
           </h5>
         </div>
