@@ -8,12 +8,16 @@ const signup = async (req, res, next) => {
   let name = req.body.name
   let username = req.body.username
   let email = req.body.email
+  let gamesplayed = req.body.gamesplayed
+  let gameswon = req.body.gameswon
   let password = req.body.password
 
   const user = new User({
     name: name,
     username: username,
     email: email,
+    gamesplayed: gamesplayed,
+    gameswon: gameswon,
   })
   await user.setPassword(password)
   await user

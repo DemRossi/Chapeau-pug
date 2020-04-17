@@ -24,8 +24,10 @@ let SignUpBtn = document
       },
       body: JSON.stringify({
         name: name,
-        email: email,
         username: username,
+        email: email,
+        gamesplayed: 0,
+        gameswon: 0,
         password: password,
       }),
     })
