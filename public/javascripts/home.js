@@ -13,10 +13,12 @@ fetch('http://localhost:3000/api/v1/lobby', {
     console.log(json)
   })
   .catch((err) => {
-    // console.log('error!!!')
+    console.log('error!!!')
+    // something wrong happend page
+
     // Delete existing tokens and redirect
-    localStorage.removeItem('token')
-    localStorage.removeItem('user_id')
-    localStorage.removeItem('username')
-    window.location.href = '/login'
+    // localStorage.removeItem('token')
+    // localStorage.removeItem('user_id')
+    // localStorage.removeItem('username')
+    // window.location.href = '/login'
   })

@@ -83,7 +83,7 @@ const login = async (req, res, next) => {
 
 let check = (req, res) => {
   let username = req.body.username
-  console.log(username)
+  // console.log(username)
   User.findOne({ username: username }, (err, doc) => {
     if (err) {
       res.json({
