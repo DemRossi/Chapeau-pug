@@ -75,6 +75,76 @@ let create = (req, res) => {
   })
 }
 
+//PUT callback for joining a lobby
+let join = (req, res, next) => {
+  let lobbyid = req.params.id
+  let userdata = {
+    user_id: '5e99d9a04d69d4309c3662a8',
+    username: 'weske',
+    gamesplayed: 0,
+    gameswon: 0,
+  }
+  //search the specific message by it's id and update it
+  Lobby.findOneAndUpdate(
+    { _id: lobbyid },
+    { $push: { playersinside: userdata } },
+    { new: true },
+    (err, docs) => {
+      //handle error if there is any (don't block the thread!)
+      if (err) {
+        res.json({
+          status: 'error',
+          message: err.message,
+        })
+      }
+      //if no errors, go ahead and do your job!
+      if (!err) {
+        res.json({
+          status: 'success',
+          data: docs,
+        })
+      }
+    }
+  )
+}
+
+//PUT callback for leaving a lobby
+let leave = (req, res, next) => {
+  let lobbyid = req.params.id
+  let userid = req.params.uid
+
+  let userdata = {
+    user_id: '5e99d9a04d69d4309c3662a8',
+    username: 'weske',
+    gamesplayed: 0,
+    gameswon: 0,
+  }
+  //search the specific message by it's id and update it
+  Lobby.findOneAndUpdate(
+    { _id: lobbyid },
+    { $pull: { playersinside: userdata } },
+    { new: true },
+    (err, docs) => {
+      //handle error if there is any (don't block the thread!)
+      if (err) {
+        res.json({
+          status: 'error',
+          message: err.message,
+        })
+      }
+      //if no errors, go ahead and do your job!
+      if (!err) {
+        res.json({
+          status: 'success',
+          data: docs,
+        })
+      }
+    }
+  )
+}
+
 module.exports.getAll = getAll
 module.exports.create = create
 module.exports.getLobbyById = getLobbyById
+module.exports.join = join
+module.exports.leave = leave

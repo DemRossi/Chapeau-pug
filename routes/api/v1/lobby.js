@@ -10,4 +10,8 @@ router.get('/:id', lobbyController.getLobbyById)
 
 router.post('/', lobbyController.create)
 
+router.put('/:id', lobbyController.join)
+
+router.put('/:id/:uid', lobbyController.leave)
+
 module.exports = router
