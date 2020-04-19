@@ -17,6 +17,7 @@ let createBtn = document
         owner: localStorage.getItem('username'),
         playersamount: parseInt(playersAmount),
         playersinside: [
+          // Put owner in
           // {
           //   user_id: '5e99d9a04d69d4309c3662a8',
           //   username: 'weske',
