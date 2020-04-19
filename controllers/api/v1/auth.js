@@ -33,12 +33,16 @@ const signup = async (req, res, next) => {
       )
       let user_id = result._id
       let username = result.username
+      let gamesplayed = result.gamesplayed
+      let gameswon = result.gameswon
       res.json({
         status: 'success',
         data: {
           token: token,
           user_id: user_id,
           username: username,
+          gamesplayed: gamesplayed,
+          gameswon: gameswon,
         },
       })
     })
@@ -68,12 +72,17 @@ const login = async (req, res, next) => {
       )
       let user_id = result.user._id
       let username = result.user.username
+      let gamesplayed = result.user.gamesplayed
+      let gameswon = result.user.gameswon
+
       return res.json({
         status: 'success',
         data: {
           token: token,
           user_id: user_id,
           username: username,
+          gamesplayed: gamesplayed,
+          gameswon: gameswon,
         },
       })
     })

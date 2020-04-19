@@ -78,11 +78,16 @@ let create = (req, res) => {
 //PUT callback for joining a lobby
 let join = (req, res, next) => {
   let lobbyid = req.params.id
+  let userid = req.body.uid
+  let username = req.body.username
+  let gamesplayed = req.body.gamesplayed
+  let gameswon = req.body.gameswon
+  // body data
   let userdata = {
-    user_id: '5e99d9a04d69d4309c3662a8',
-    username: 'weske',
-    gamesplayed: 0,
-    gameswon: 0,
+    user_id: userid, //'5e99d9a04d69d4309c3662a8'
+    username: username, // 'weske'
+    gamesplayed: gamesplayed, // 0
+    gameswon: gameswon, // 0
   }
   //search the specific message by it's id and update it
   Lobby.findOneAndUpdate(
@@ -114,10 +119,10 @@ let leave = (req, res, next) => {
   let userid = req.params.uid
 
   let userdata = {
-    user_id: '5e99d9a04d69d4309c3662a8',
-    username: 'weske',
-    gamesplayed: 0,
-    gameswon: 0,
+    user_id: userid,
+    // username: 'weske',
+    // gamesplayed: 0,
+    // gameswon: 0,
   }
   //search the specific message by it's id and update it
   Lobby.findOneAndUpdate(

@@ -23,6 +23,7 @@ app.set('view engine', 'pug')
 dotenv.config()
 let connectionString = process.env.MONGOCON_URI
 mongoose.set('useCreateIndex', true)
+mongoose.set('useFindAndModify', false)
 mongoose.connect(connectionString, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
