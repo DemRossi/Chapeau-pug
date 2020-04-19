@@ -18,13 +18,14 @@ fetch('http://localhost:3000/api/v1/lobby', {
         let lobbyWrapper = document.createElement('div')
         lobbyWrapper.classList.add('content__list', 'content__list--home')
         lobbyWrapper.dataset.id = json.data[i]._id
-
+        let playersinside = json.data[i].playersinside.length
+        console.log(json.data[i])
         let lobbyTemplate = `
         <h2 class="content__list_name">${json.data[i].lobbyname}</h2>
 
         <div class="content__list_amountPlayers">
           <h5>
-            <span class="content__list_amountPlayers_amount">5</span>
+            <span class="content__list_amountPlayers_amount">${playersinside}</span>
             /
             <span class="content__list_amountPlayers_many">${json.data[i].playersamount}</span>
             players inside
@@ -43,7 +44,7 @@ fetch('http://localhost:3000/api/v1/lobby', {
         </div>
 
         <div class="content__btn">
-          <a href="/lobby/${json.data[i]._id}" class="btn btn-success btn--join">Join</a>
+          <a href="" data-id="${json.data[i]._id}" class="btn btn-success btn--join">Join</a>
         </div>
         `
         lobbyWrapper.innerHTML = lobbyTemplate
