@@ -1,7 +1,6 @@
 extends layout
 
 block content
-  script(src="javascripts/t_checker.js")
   include ../views/partials/header
 
   .content__container
@@ -9,7 +8,7 @@ block content
         a.btn.btn-danger.btn--back(type='button', href='/') Back
     .content__wrapper--top-middle
         h3 Create a new lobby
-    .content__wrapper--bottom-middle
+    .content__wrapper--middle-middle
         form
             .form-group
               label(for='LobbyName') Name of the lobby
