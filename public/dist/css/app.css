@@ -238,7 +238,7 @@ form {
 
 .content__list--home {
   height: 200px;
-  grid-template-columns: 5% 40% 10% 40% 5%;
+  grid-template-columns: 5% 45% 10% 35% 5%;
   grid-template-rows: 20% 20% 20% auto; }
 
 .content__list_name {
@@ -263,11 +263,8 @@ form {
   display: flex;
   justify-content: flex-end;
   align-items: baseline;
-  font-size: 1.1em; }
-
-.content__list_amountPlayers_amount,
-.content__list_amountPlayers_many {
-  font-size: 1.1em; }
+  font-size: 0.9em;
+  text-align: right; }
 
 .content__list_playersInside {
   grid-column-start: 2;

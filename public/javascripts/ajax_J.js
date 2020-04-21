@@ -1,5 +1,4 @@
 window.onload = (event) => {
-  // let that = this
   let lobbiesContainer = document
     .querySelector('.content__wrapper--middle-middle')
     .addEventListener('click', (e) => {
