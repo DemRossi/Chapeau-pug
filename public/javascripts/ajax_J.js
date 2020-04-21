@@ -7,78 +7,73 @@ window.onload = (event) => {
         e.target.parentElement.previousElementSibling.previousElementSibling
           .firstElementChild.firstElementChild.innerHTML
       )
-
       let playersamount = parseInt(
         e.target.parentElement.previousElementSibling.previousElementSibling
           .firstElementChild.lastElementChild.innerHTML
       )
 
-      console.log(playersinside + playersamount)
-      console.log(playersamount)
-
       if (playersinside >= playersamount) {
         console.log('cant join!!!!')
-        // Full Lobby error
-        let alert = document.querySelector('.alert')
-        // let alert = document.createElement('div')
-        alert.classList.add('show')
+        // Make error message for full lobby
+        let alert = document.createElement('div')
+        alert.classList.add(
+          'alert',
+          'alert-warning',
+          'alert-dismissible',
+          'fade',
+          'show'
+        )
+        let alertTemplate = `
+            <strong>Hads up!</strong> This lobby has no empty places left.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        `
+        alert.innerHTML = alertTemplate
 
-        // let alertTemplate = `
-        //   <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        //     <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-        //     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        //       <span aria-hidden="true">&times;</span>
-        //     </button>
-        //   </div>
-        // `
-
-        $('.alert').alert()
+        const alertbox = document.querySelector(
+          '.content__wrapper--bottom-middle'
+        )
+        alertbox.appendChild(alert)
       } else {
         console.log('can join!!!!')
         // proceed to join
-        // if (e.target.matches('.btn--join')) {
-        //   // Get lobby id
-        //   let lobby_id = e.target.parentElement.parentElement.dataset.id
+        if (e.target.matches('.btn--join')) {
+          // Get lobby id
+          let lobby_id = e.target.parentElement.parentElement.dataset.id
 
-        //   // Get user data
-        //   let user_id = localStorage.getItem('user_id')
-        //   let username = localStorage.getItem('username')
-        //   let gamesplayed = localStorage.getItem('gamesplayed')
-        //   let gameswon = localStorage.getItem('gameswon')
+          // Get user data
+          let user_id = localStorage.getItem('user_id')
+          let username = localStorage.getItem('username')
+          let gamesplayed = localStorage.getItem('gamesplayed')
+          let gameswon = localStorage.getItem('gameswon')
 
-        //   // console.log(lobby_id)
-        //   // console.log(user_id)
-        //   // console.log(username)
-        //   // console.log(gamesplayed)
-        //   // console.log(gameswon)
-
-        //   // Start join fetch
-
-        //   fetch(`/api/v1/lobby/${lobby_id}`, {
-        //     method: 'put',
-        //     headers: {
-        //       Accept: 'application/json, text/plain, */*',
-        //       'Content-Type': 'application/json',
-        //       Authorization: 'Bearer ' + localStorage.getItem('token'),
-        //     },
-        //     body: JSON.stringify({
-        //       // Put user data in json
-        //       uid: user_id,
-        //       username: username,
-        //       gamesplayed: gamesplayed,
-        //       gameswon: gameswon,
-        //     }),
-        //   })
-        //     .then((response) => {
-        //       return response.json()
-        //     })
-        //     .then((json) => {
-        //       if (json.status == 'success') {
-        //         //redirect to /lobby/:id
-        //         window.location.href = `/lobby/${lobby_id}`
-        //       }
-        //     })
-        // }
+          // Start join fetch
+          fetch(`/api/v1/lobby/${lobby_id}`, {
+            method: 'put',
+            headers: {
+              Accept: 'application/json, text/plain, */*',
+              'Content-Type': 'application/json',
+              Authorization: 'Bearer ' + localStorage.getItem('token'),
+            },
+            body: JSON.stringify({
+              // Put user data in json
+              uid: user_id,
+              username: username,
+              gamesplayed: gamesplayed,
+              gameswon: gameswon,
+            }),
+          })
+            .then((response) => {
+              return response.json()
+            })
+            .then((json) => {
+              if (json.status == 'success') {
+                //redirect to /lobby/:id
+                window.location.href = `/lobby/${lobby_id}`
+              }
+            })
+        }
       }
       e.preventDefault()
     })
