@@ -10,7 +10,7 @@ block content
         //- a.btn.btn-danger.btn--back(type='button', href='/') Leave lobby
     .content__wrapper--top-middle
       a.btn.btn-warning.btn--new(type='button', href='/create') Create new lobby
-    .content__wrapper--bottom-middle
+    .content__wrapper--middle-middle
     
       //- .content__list.content__list--home
       //-   h2.content__list_name LobbyName
@@ -30,6 +30,13 @@ block content
       //-       .content__list_profilepic--small
       //-   .content__btn
       //-     button.btn.btn-success.btn--join(type='button') Join
+
+    .content__wrapper--bottom-middle
+      .alert.alert-warning.alert-dismissible.fade(role='alert')
+        strong Holy guacamole!
+        |  You should check in on some of those fields below.
+        button.close(type='button', data-dismiss='alert', aria-label='Close')
+          span(aria-hidden='true') ×
   script(src="javascripts/ajax_J.js")
 
   

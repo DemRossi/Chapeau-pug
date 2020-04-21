@@ -186,7 +186,7 @@ form {
   height: 92%;
   display: grid;
   grid-template-columns: auto 50% auto;
-  grid-template-rows: 75px 5px auto; }
+  grid-template-rows: 75px 5px auto 75px; }
 
 .content__wrapper--top-left {
   grid-column-start: 1;
@@ -213,11 +213,18 @@ form {
   justify-self: center;
   align-self: center; }
 
-.content__wrapper--bottom-middle {
+.content__wrapper--middle-middle {
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 3;
   grid-row-end: 4;
+  overflow-y: auto; }
+
+.content__wrapper--bottom-middle {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 4;
+  grid-row-end: 5;
   overflow-y: auto; }
 
 .content__list {

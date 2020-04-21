@@ -19,7 +19,7 @@ fetch('http://localhost:3000/api/v1/lobby', {
         lobbyWrapper.classList.add('content__list', 'content__list--home')
         lobbyWrapper.dataset.id = json.data[i]._id
         let playersinside = json.data[i].playersinside.length
-        console.log(json.data[i])
+        // console.log(json.data[i])
         let lobbyTemplate = `
         <h2 class="content__list_name">${json.data[i].lobbyname}</h2>
 
@@ -50,7 +50,7 @@ fetch('http://localhost:3000/api/v1/lobby', {
         lobbyWrapper.innerHTML = lobbyTemplate
 
         const lobbyList = document.querySelector(
-          '.content__wrapper--bottom-middle'
+          '.content__wrapper--middle-middle'
         )
         lobbyList.appendChild(lobbyWrapper)
       }

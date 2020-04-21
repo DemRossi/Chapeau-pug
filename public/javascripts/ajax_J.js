@@ -1,7 +1,7 @@
 window.onload = (event) => {
   // let that = this
   let lobbiesContainer = document
-    .querySelector('.content__wrapper--bottom-middle')
+    .querySelector('.content__wrapper--middle-middle')
     .addEventListener('click', (e) => {
       let playersinside = parseInt(
         e.target.parentElement.previousElementSibling.previousElementSibling
@@ -17,8 +17,22 @@ window.onload = (event) => {
       console.log(playersamount)
 
       if (playersinside >= playersamount) {
-        // console.log('cant join!!!!')
+        console.log('cant join!!!!')
         // Full Lobby error
+        let alert = document.querySelector('.alert')
+        // let alert = document.createElement('div')
+        alert.classList.add('show')
+
+        // let alertTemplate = `
+        //   <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        //     <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+        //     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        //       <span aria-hidden="true">&times;</span>
+        //     </button>
+        //   </div>
+        // `
+
+        $('.alert').alert()
       } else {
         console.log('can join!!!!')
         // proceed to join
