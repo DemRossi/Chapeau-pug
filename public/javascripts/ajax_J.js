@@ -12,7 +12,7 @@ window.onload = (event) => {
       )
 
       if (playersinside >= playersamount) {
-        console.log('cant join!!!!')
+        // console.log('cant join!!!!')
         // Make error message for full lobby
         let alert = document.createElement('div')
         alert.classList.add(
@@ -35,7 +35,7 @@ window.onload = (event) => {
         )
         alertbox.appendChild(alert)
       } else {
-        console.log('can join!!!!')
+        // console.log('can join!!!!')
         // proceed to join
         if (e.target.matches('.btn--join')) {
           // Get lobby id

@@ -10,14 +10,6 @@ let LobbySchema = new Schema({
   },
   playersamount: Number,
   playersinside: Object,
-  // playersinside: [
-  //   {
-  //     user_id: Number,
-  //     username: String,
-  //     gamesplayed: Number,
-  //     gameswon: Number,
-  //   },
-  // ],
 })
 const Lobby = mongoose.model('Lobbies', LobbySchema)
 

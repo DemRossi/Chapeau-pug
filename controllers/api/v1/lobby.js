@@ -49,6 +49,7 @@ let getLobbyById = (req, res) => {
   })
 }
 
+// Create a new lobby
 let create = (req, res) => {
   let lobby = new Lobby()
 
@@ -75,7 +76,7 @@ let create = (req, res) => {
   })
 }
 
-//PUT callback for joining a lobby
+// PUT callback for joining a lobby
 let join = (req, res, next) => {
   let lobbyid = req.params.id
   let userid = req.body.uid
@@ -120,9 +121,6 @@ let leave = (req, res, next) => {
 
   let userdata = {
     user_id: userid,
-    // username: 'weske',
-    // gamesplayed: 0,
-    // gameswon: 0,
   }
   //search the specific message by it's id and update it
   Lobby.findOneAndUpdate(
