@@ -2,25 +2,26 @@ extends layout
 
 block content
   script(src="../javascripts/t_checker.js")
+  script(src="../javascripts/ajax_Lobby.js")
   include ../views/partials/header
 
   .content__container
     .content__wrapper--top-left
         a.btn.btn-danger.btn--leave(type='button', href='') Leave lobby
     .content__wrapper--top-middle
-      h3 Lobby: Lobby name
+      h3.lobbyname
     .content__wrapper--top-right
-      a.btn.btn-success(type='button', href='#') Ready Up
+      a.btn.btn-success.btn--ready(type='button', href='#') Ready Up
     .content__wrapper--middle-middle
-      .content__list.content__list--lobby
-        .content__list_profilepic_wrapper--big.content__list_profilepic--big
-        h4.content__list_username Username
-        .content__list_amountPlays
-          h6
-            span.content__list_amountPlays_amount 5
-            |  games played
-        .content__list_amountWins
-          h6
-            span.content__list_amountWins_amount 3
-            |  games won
-  script(src="../javascripts/ajax_leave.js")
+      //- .content__list.content__list--lobby
+      //-   .content__list_profilepic_wrapper--big.content__list_profilepic--big
+      //-   h4.content__list_username Username
+      //-   .content__list_amountPlays
+      //-     h6
+      //-       span.content__list_amountPlays_amount 5
+      //-       |  games played
+      //-   .content__list_amountWins
+      //-     h6
+      //-       span.content__list_amountWins_amount 3
+      //-       |  games won
+  script(src="../javascripts/ajax_Leave.js")

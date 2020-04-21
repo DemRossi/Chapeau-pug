@@ -24,8 +24,10 @@ let SignUpBtn = document
       },
       body: JSON.stringify({
         name: name,
-        email: email,
         username: username,
+        email: email,
+        gamesplayed: 0,
+        gameswon: 0,
         password: password,
       }),
     })
@@ -44,10 +46,14 @@ let SignUpBtn = document
           let token = json.data.token
           let user_id = json.data.user_id
           let username = json.data.username
+          let gamesplayed = json.data.gamesplayed
+          let gameswon = json.data.gameswon
 
           localStorage.setItem('token', token)
           localStorage.setItem('user_id', user_id)
           localStorage.setItem('username', username)
+          localStorage.setItem('gamesplayed', gamesplayed)
+          localStorage.setItem('gameswon', gameswon)
 
           window.location.href = '/'
         } else {

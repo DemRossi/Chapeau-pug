@@ -35,7 +35,7 @@ let getLobbyById = (req, res) => {
   Lobby.findById({ _id: lobbyId }, (err, doc) => {
     if (err) {
       res.json({
-        status: 'error',
+        status: 'failed',
         message: err.message,
       })
     }

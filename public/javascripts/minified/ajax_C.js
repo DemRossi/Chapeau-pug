@@ -16,6 +16,15 @@ let createBtn = document
         lobbyname: lobbyName,
         owner: localStorage.getItem('username'),
         playersamount: parseInt(playersAmount),
+        playersinside: [
+          // Put owner in
+          {
+            user_id: localStorage.getItem('user_id'), // '5e99d9a04d69d4309c3662a8',
+            username: localStorage.getItem('username'), // 'weske',
+            gamesplayed: localStorage.getItem('gamesplayed'), // 0,
+            gameswon: localStorage.getItem('gameswon'), // 0,
+          },
+        ],
       }),
     })
       .then((response) => {
