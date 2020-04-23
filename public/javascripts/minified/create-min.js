@@ -1,0 +1,1 @@
+let createBtn=document.querySelector(".btn--create").addEventListener("click",e=>{(new Lobby).create(),e.preventDefault()});
