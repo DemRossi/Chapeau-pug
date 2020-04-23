@@ -1,6 +1,7 @@
 extends layoutH
 
 block content
+  script(src="http://localhost:3000/primus/primus.js")
   script(src="javascripts/home.js")
   
   include ../views/partials/header
@@ -38,5 +39,3 @@ block content
       //-   button.close(type='button', data-dismiss='alert', aria-label='Close')
       //-     span(aria-hidden='true') ×
   script(src="javascripts/ajax_J.js")
-
-  

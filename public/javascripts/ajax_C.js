@@ -33,7 +33,7 @@ let createBtn = document
       .then((json) => {
         if (json.status == 'success') {
           // take lobby id
-          console.log(json.data.lobby._id)
+          // console.log(json.data.lobby._id)
           let lobby_id = json.data.lobby._id
           //redirect to /lobby/:id
           window.location.href = `/lobby/${lobby_id}`
