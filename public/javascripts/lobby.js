@@ -10,6 +10,11 @@ class Lobby {
         retries: 10, // Number: How many times we should try to reconnect.
       },
     })
+    this.primus.on('data', (json) => {
+      if (json.action === 'addLobby') {
+        appendLobby(json.data)
+      }
+    })
   }
 
   // GET all lobbies
@@ -196,8 +201,13 @@ class Lobby {
       })
       .then((json) => {
         if (json.status == 'success') {
+          // Let server know a Lobby is created
+          this.primus.write({
+            action: 'addLobby',
+            data: json,
+          })
+
           // take lobby id
-          // console.log(json.data.lobby._id)
           let lobby_id = json.data.lobby._id
           //redirect to /lobby/:id
           window.location.href = `/lobby/${lobby_id}`
@@ -314,5 +324,48 @@ class Lobby {
           })
         e.preventDefault()
       })
+  }
+}
+
+// append lobby
+let appendLobby = (json) => {
+  console.log(json)
+  try {
+    let lobbyWrapper = document.createElement('div')
+    lobbyWrapper.classList.add('content__list', 'content__list--home')
+    lobbyWrapper.dataset.id = json.data.lobby._id
+    console.log(json.data.lobby._id)
+    let playersinside = json.data.lobby.playersinside.length
+    console.log(playersinside)
+    let lobbyTemplate = `
+      <h2 class="content__list_name">${json.data.lobby.lobbyname}</h2>
+      <div class="content__list_amountPlayers">
+          <h5>
+            <span class="content__list_amountPlayers_amount">${playersinside}</span>
+            /
+            <span class="content__list_amountPlayers_many">${json.data.lobby.playersamount}</span>
+            players inside
+          </h5>
+        </div>
+      <div class="content__list_playersInside">
+          <h6 class="content__list_playersInside_peopleTitle">People in lobby:</h6>
+          <div class="content__list_profilepic_wrapper--small">
+            <div class="content__list_profilepic--small"></div>
+            <div class="content__list_profilepic--small"></div>
+            <div class="content__list_profilepic--small"></div>
+            <div class="content__list_profilepic--small"></div>
+            <div class="content__list_profilepic--small"></div>
+          </div>
+        </div>
+      <div class="content__btn">
+      <a href="" data-id="${json.data.lobby._id}" class="btn btn-success btn--join">Join</a>
+      </div>
+    `
+    lobbyWrapper.innerHTML = lobbyTemplate
+    const lobbyList = document.querySelector('.content__wrapper--middle-middle')
+    lobbyList.appendChild(lobbyWrapper)
+  } catch (e) {
+    // Return when lobby doesn't need to append
+    return
   }
 }

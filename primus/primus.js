@@ -5,7 +5,12 @@ let go = (server) => {
     /* options */
   })
   primus.on('connection', (spark) => {
-    console.log('Received spark 🔥🔥🔥')
+    console.log('Received spark!!!')
+    spark.on('data', (data) => {
+      console.log(data)
+      console.log('Backend received data!!!!')
+      primus.write(data)
+    })
   })
 }
 
