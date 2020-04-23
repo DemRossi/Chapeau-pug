@@ -1,10 +1,11 @@
 extends layout
 
 block content
-  script(src="../javascripts/t_checker.js")
-  script(src="../javascripts/ajax_Lobby.js")
+  script(src="http://localhost:3000/primus/primus.js")
+  script(src="http://localhost:3000/javascripts/lobby.js")
+  script(src="http://localhost:3000/javascripts/joined.js")
   include ../views/partials/header
-
+  
   .content__container
     .content__wrapper--top-left
         a.btn.btn-danger.btn--leave(type='button', href='') Leave lobby
@@ -24,4 +25,5 @@ block content
       //-     h6
       //-       span.content__list_amountWins_amount 3
       //-       |  games won
-  script(src="../javascripts/ajax_Leave.js")
+  script(src="http://localhost:3000/javascripts/leave.js")
+  

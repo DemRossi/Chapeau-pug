@@ -30,7 +30,8 @@
   justify-self: center;
   align-self: center;
 }
-.content__wrapper--middle-middle {
+.content__wrapper--middle-middle,
+.content__wrapper--middle-middle-create {
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 3;
