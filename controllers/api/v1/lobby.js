@@ -81,12 +81,14 @@ let join = (req, res, next) => {
   let lobbyid = req.params.id
   let userid = req.body.uid
   let username = req.body.username
+  let profilepic = req.body.profilepic
   let gamesplayed = req.body.gamesplayed
   let gameswon = req.body.gameswon
   // body data
   let userdata = {
     user_id: userid, //'5e99d9a04d69d4309c3662a8'
     username: username, // 'weske'
+    profilepic: profilepic,
     gamesplayed: gamesplayed, // 0
     gameswon: gameswon, // 0
   }

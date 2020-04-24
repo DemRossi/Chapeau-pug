@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  include ../views/partials/header
+
+  .content__container
+    .content__wrapper--top-left
+        //- a.btn.btn-danger.btn--back(type='button', href='/') Leave lobby
+    .content__wrapper--top-middle
+    //-   a.btn.btn-warning.btn--new(type='button', href='/create') Create new lobby
+    .content__wrapper--middle-middle-profile
+      .profile_profilepic
+        img(src='../images/LogoOld.svg')
+      form
+        .form-group
+          label(for='File') Change profile picture
+          input#File.form-control-file(type='file')
+
+
+    .content__wrapper--bottom-middle
+      //- .alert.alert-warning.alert-dismissible.fade(role='alert')
+      //-   strong Holy guacamole!
+      //-   |  You should check in on some of those fields below.
+      //-   button.close(type='button', data-dismiss='alert', aria-label='Close')
+      //-     span(aria-hidden='true') ×
+//-   script(src="http://localhost:3000/primus/primus.js")
+//-   script(src="http://localhost:3000/javascripts/lobby.js")
+//-   script(src="http://localhost:3000/javascripts/home.js")

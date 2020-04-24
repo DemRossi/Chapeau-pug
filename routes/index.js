@@ -34,4 +34,12 @@ router.get(
     res.render('lobby', { title: 'Chapeau - Inside lobby' })
   }
 )
+/* GET profile page. */
+router.get(
+  '/profile/:id',
+  // passport.authenticate('jwt', { session: false }),
+  (req, res, next) => {
+    res.render('profile', { title: 'Chapeau - Profile' })
+  }
+)
 module.exports = router

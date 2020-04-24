@@ -82,7 +82,7 @@ class Lobby {
         <h2 class="content__list_error">${json.message}</h2>
         `
           const lobbyList = document.querySelector(
-            '.content__wrapper--bottom-middle'
+            '.content__wrapper--middle-middle'
           )
           lobbyList.innerHTML = lobbyTemplate
           // lobbyList.appendChild(lobbyWrapper)
@@ -132,7 +132,7 @@ class Lobby {
         `
             playerWrapper.innerHTML = playerTemplate
             const playerList = document.querySelector(
-              '.content__wrapper--middle-middle'
+              '.content__wrapper--middle-middle-lobby'
             )
             playerList.appendChild(playerWrapper)
           }
@@ -190,6 +190,7 @@ class Lobby {
           {
             user_id: localStorage.getItem('user_id'), // '5e99d9a04d69d4309c3662a8',
             username: localStorage.getItem('username'), // 'weske',
+            profilepic: localStorage.getItem('profilepic'),
             gamesplayed: localStorage.getItem('gamesplayed'), // 0,
             gameswon: localStorage.getItem('gameswon'), // 0,
           },
@@ -262,6 +263,7 @@ class Lobby {
             // Get user data
             let user_id = localStorage.getItem('user_id')
             let username = localStorage.getItem('username')
+            let profilepic = localStorage.getItem('profilepic')
             let gamesplayed = localStorage.getItem('gamesplayed')
             let gameswon = localStorage.getItem('gameswon')
 
@@ -277,6 +279,7 @@ class Lobby {
                 // Put user data in json
                 uid: user_id,
                 username: username,
+                profilepic: profilepic,
                 gamesplayed: gamesplayed,
                 gameswon: gameswon,
               }),

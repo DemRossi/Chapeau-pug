@@ -31,7 +31,9 @@
   align-self: center;
 }
 .content__wrapper--middle-middle,
-.content__wrapper--middle-middle-create {
+.content__wrapper--middle-middle-create,
+.content__wrapper--middle-middle-profile,
+.content__wrapper--middle-middle-lobby {
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 3;

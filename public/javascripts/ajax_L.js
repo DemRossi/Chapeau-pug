@@ -39,12 +39,14 @@ let loginBtn = document
           let token = json.data.token
           let user_id = json.data.user_id
           let username = json.data.username
+          let profilepic = json.data.profilepic
           let gamesplayed = json.data.gamesplayed
           let gameswon = json.data.gameswon
 
           localStorage.setItem('token', token)
           localStorage.setItem('user_id', user_id)
           localStorage.setItem('username', username)
+          localStorage.setItem('profilepic', profilepic)
           localStorage.setItem('gamesplayed', gamesplayed)
           localStorage.setItem('gameswon', gameswon)
 
