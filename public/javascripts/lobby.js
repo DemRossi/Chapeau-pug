@@ -286,6 +286,7 @@ class Lobby {
               })
               .then((json) => {
                 if (json.status == 'success') {
+                  // Let server know to add 1 to playersinside number on home
                   //redirect to /lobby/:id
                   window.location.href = `/lobby/${lobby_id}`
                 }
@@ -318,7 +319,8 @@ class Lobby {
           })
           .then((json) => {
             if (json.status == 'success') {
-              //redirect to /
+              // Let server know reduce 1 to playersinside number on home
+              // Redirect to /
               window.location.href = `/`
             }
           })
