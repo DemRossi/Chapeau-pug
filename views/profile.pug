@@ -12,9 +12,23 @@ block content
       .profile_profilepic
         img(src='../images/LogoOld.svg')
       form
+        .form-group.custom-file
+          label.custom-file-label(for='File') Change profile picture
+          input#customFile.custom-file-input(type='file')
         .form-group
-          label(for='File') Change profile picture
-          input#File.form-control-file(type='file')
+            //- label(for='email') Email
+            input#email.form-control(type='email', value='Email')
+        .form-group
+            //- label(for='username') Username
+            input#username.form-control(type='text', value='Username')
+        //- .form-group
+        //-     //- label(for='oldPassword') Old password
+        //-     input#oldPassword.form-control(type='password')
+        //- .form-group
+        //-     //- label(for='password') New password
+        //-     input#password.form-control(type='password')
+        .form-group.text-center
+          input.btn.btn-success.btn--profile(type='submit' value='Update profile')
 
 
     .content__wrapper--bottom-middle

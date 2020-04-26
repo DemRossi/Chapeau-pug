@@ -1,29 +1,29 @@
-.btn-success{
-    background-color: $green;
+.btn-success {
+  background-color: $green;
 }
-.btn-success:hover{
-    background-color: darken($color: $green, $amount: 5);
+.btn-success:hover {
+  background-color: darken($color: $green, $amount: 5);
 }
-.btn-success:not(:disabled):not(.disabled):active{
-    background-color: darken($color: $green, $amount: 10);
+.btn-success:not(:disabled):not(.disabled):active {
+  background-color: darken($color: $green, $amount: 10);
 }
-.btn-success:focus{
-    background-color: darken($color: $green, $amount: 10);
+.btn-success:focus {
+  background-color: darken($color: $green, $amount: 10);
 }
-.btn--new{
-    background-color: $yellow;
-    color: white;
-    border-radius: 5px;
-    // border: none;
+.btn--new {
+  background-color: $yellow;
+  color: white;
+  border-radius: 5px;
+  // border: none;
 }
-.btn--new:hover{
-    color:white;
+.btn--new:hover {
+  color: white;
 }
-.btn--join{
-    width: 100%;
+.btn--join {
+  width: 100%;
 }
-.btn--back{
-    color: white;
-    border-radius: 5px;
-    // border: none;
+.btn--back {
+  color: white;
+  border-radius: 5px;
+  // border: none;
 }

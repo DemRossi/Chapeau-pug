@@ -21,7 +21,7 @@ form {
   margin: 40px auto; }
 
 .btn-success {
-  background-color: #21A675; }
+  background-color: #21a675; }
 
 .btn-success:hover {
   background-color: #1d9166; }
@@ -33,7 +33,7 @@ form {
   background-color: #197b57; }
 
 .btn--new {
-  background-color: #F2B90F;
+  background-color: #f2b90f;
   color: white;
   border-radius: 5px; }
 
@@ -85,7 +85,7 @@ form {
   background-color: #dddddd;
   margin: 0 auto;
   border-radius: 15px;
-  box-shadow: 0 0 10px #3D3D3D;
+  box-shadow: 0 0 10px #3d3d3d;
   padding-bottom: 30px; }
 
 .form__wrapper--login {
@@ -104,7 +104,7 @@ form {
   width: 50%;
   height: 60px;
   border-radius: 0px;
-  color: #3D3D3D;
+  color: #3d3d3d;
   font-size: 1.5em;
   text-align: center;
   background-color: #dddddd;
@@ -123,7 +123,7 @@ form {
 
 .form__nav_item--active {
   color: #dddddd;
-  background-color: #21A675; }
+  background-color: #21a675; }
 
 .header {
   width: 100%;
@@ -352,4 +352,7 @@ form {
   margin: 0 auto;
   border-radius: 50%;
   overflow: hidden;
-  border: 1px solid #3D3D3D; }
+  border: 1px solid #ced4da; }
+
+.custom-file {
+  margin-bottom: 3.2%; }

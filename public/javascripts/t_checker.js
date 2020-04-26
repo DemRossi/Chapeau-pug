@@ -27,6 +27,9 @@ if (!localStorage.getItem('token')) {
       localStorage.removeItem('token')
       localStorage.removeItem('user_id')
       localStorage.removeItem('username')
+      localStorage.removeItem('profilepic')
+      localStorage.removeItem('gamesplayed')
+      localStorage.removeItem('gameswon')
 
       window.location.href = '/login'
     })
