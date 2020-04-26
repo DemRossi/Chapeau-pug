@@ -6,8 +6,14 @@ const User = new Schema({
   name: String,
   username: String,
   email: String,
-  gamesplayed: Number,
-  gameswon: Number,
+  profile: {
+    profilepicture: String,
+    gamesplayed: Number,
+    gameswon: Number,
+  },
+
+  // gamesplayed: Number,
+  // gameswon: Number,
 })
 User.plugin(passportLocalMongoose)
 

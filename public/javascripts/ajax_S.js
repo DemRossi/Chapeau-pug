@@ -26,9 +26,6 @@ let SignUpBtn = document
         name: name,
         username: username,
         email: email,
-        profilepic: '../images/LogoOld.svg',
-        gamesplayed: 0,
-        gameswon: 0,
         password: password,
       }),
     })

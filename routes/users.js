@@ -15,5 +15,10 @@ router.post(
   passport.authenticate('jwt', { session: false }),
   authController.check
 )
+router.get(
+  '/profile/:id',
+  // passport.authenticate('jwt', { session: false }),
+  authController.getUserById
+)
 
 module.exports = router

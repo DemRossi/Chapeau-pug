@@ -12,7 +12,7 @@ const passport = require('./passport/passport')
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 const apiLobbyRouter = require('./routes/api/v1/lobby')
-const apiProfileRouter = require('./routes/api/v1/profile')
+// const apiProfileRouter = require('./routes/api/v1/profile')
 
 const app = express()
 
@@ -45,11 +45,11 @@ app.use(
   passport.authenticate('jwt', { session: false }),
   apiLobbyRouter
 )
-app.use(
-  '/api/v1/profile',
-  passport.authenticate('jwt', { session: false }),
-  apiProfileRouter
-)
+// app.use(
+//   '/api/v1/profile',
+//   passport.authenticate('jwt', { session: false }),
+//   apiProfileRouter
+// )
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,5 +1,5 @@
 const User = require('../../../models/User')
-const Profile = require('../../../models/profile')
+// const Profile = require('../../../models/profile')
 const dotenv = require('dotenv')
 const jwt = require('jsonwebtoken')
 
@@ -16,6 +16,11 @@ const signup = async (req, res, next) => {
     name: name,
     username: username,
     email: email,
+    profile: {
+      profilepicture: '../images/LogoOld.svg',
+      gamesplayed: 0,
+      gameswon: 0,
+    },
   })
   await user.setPassword(password)
   await user
@@ -23,18 +28,9 @@ const signup = async (req, res, next) => {
     .then((result) => {
       let user_id = result._id
       let username = result.username
-      let profilepic = req.body.profilepic
-      let gamesplayed = req.body.gamesplayed
-      let gameswon = req.body.gameswon
-
-      let profile = new Profile()
-
-      profile.user_id = user_id
-      profile.profilepicture = profilepic
-      profile.gamesplayed = req.body.gamesplayed
-      profile.gameswon = req.body.gameswon
-
-      profile.save()
+      let profilepic = result.profile.profilepicture
+      let gamesplayed = result.profile.gamesplayed
+      let gameswon = result.profile.gameswon
 
       let secret = process.env.JWT_SECRET
       let token = jwt.sign(
@@ -74,46 +70,30 @@ const login = async (req, res, next) => {
         })
       }
 
-      // GET Profile by id
+      let secret = process.env.JWT_SECRET
+      let token = jwt.sign(
+        {
+          uid: result.user._id,
+          username: result.user.username,
+        },
+        secret
+      )
       let user_id = result.user._id
       let username = result.user.username
+      let profilepic = result.user.profile.profilepicture
+      let gamesplayed = result.user.profile.gamesplayed
+      let gameswon = result.user.profile.gameswon
 
-      console.log('here')
-      Profile.find({ user_id: user_id }, (err, doc) => {
-        // console.log(doc)
-        if (err) {
-          res.json({
-            status: 'failed',
-            message: err.message,
-          })
-        }
-        //if no errors, go ahead and do your job!
-        if (!err) {
-          let profilepic = doc[0].profilepicture
-          let gamesplayed = doc[0].gamesplayed
-          let gameswon = doc[0].gameswon
-
-          let secret = process.env.JWT_SECRET
-          let token = jwt.sign(
-            {
-              uid: result.user._id,
-              username: result.user.username,
-            },
-            secret
-          )
-
-          return res.json({
-            status: 'success',
-            data: {
-              token: token,
-              user_id: user_id,
-              username: username,
-              profilepic: profilepic,
-              gamesplayed: gamesplayed,
-              gameswon: gameswon,
-            },
-          })
-        }
+      return res.json({
+        status: 'success',
+        data: {
+          token: token,
+          user_id: user_id,
+          username: username,
+          profilepic: profilepic,
+          gamesplayed: gamesplayed,
+          gameswon: gameswon,
+        },
       })
     })
     .catch((error) => {
@@ -145,6 +125,29 @@ let check = (req, res) => {
   })
 }
 
+let getUserById = (req, res) => {
+  let user_id = req.params.id
+  // console.log(lobbyId)
+
+  User.findById({ _id: user_id }, (err, doc) => {
+    console.log(doc)
+    if (err) {
+      res.json({
+        status: 'failed',
+        message: err.message,
+      })
+    }
+    //if no errors, go ahead and do your job!
+    if (!err) {
+      res.json({
+        status: 'success',
+        data: doc,
+      })
+    }
+  })
+}
+
 module.exports.signup = signup
 module.exports.login = login
 module.exports.check = check
+module.exports.getUserById = getUserById
