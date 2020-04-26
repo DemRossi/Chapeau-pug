@@ -1,7 +1,11 @@
+.content__list--profile {
+  padding: 4%;
+}
 .profile_profilepic {
   width: 150px;
   height: 150px;
   margin: 0 auto;
+  // margin-top: 6%;
   border-radius: 50%;
   overflow: hidden;
   border: 1px solid $bordergrey;

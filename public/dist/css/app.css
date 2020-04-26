@@ -346,6 +346,9 @@ form {
   grid-row-end: 5;
   padding-left: 10px; }
 
+.content__list--profile {
+  padding: 4%; }
+
 .profile_profilepic {
   width: 150px;
   height: 150px;
