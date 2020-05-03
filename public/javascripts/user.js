@@ -29,7 +29,7 @@ class User {
 
           let profileTemplate = `
               <div class="profile_profilepic">
-                <img src="../images/LogoOld.svg" />
+                <img src="${localStorage.getItem('profilepic')}" />
               </div>
               <form>
                 <div class="form-group custom-file">
@@ -37,10 +37,14 @@ class User {
                   <input class="custom-file-input" id="customFile" type="file" />
                 </div>
                 <div class="form-group">
-                  <input class="form-control" id="email" type="email" value="Email" />
+                  <input class="form-control" id="username" type="text" value="${
+                    json.data.username
+                  }" />
                 </div>
                 <div class="form-group">
-                  <input class="form-control" id="username" type="text" value="Username" />
+                  <input class="form-control" id="email" type="email" value="${
+                    json.data.email
+                  }" />
                 </div>
                 
                 <div class="form-group text-center">
