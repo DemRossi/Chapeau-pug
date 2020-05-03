@@ -21,7 +21,45 @@ class User {
         console.log(json)
         if (json['status'] == 'success') {
           // build profile page with data
-          //   let profileWrapper = document.createElement('div')
+          let profileWrapper = document.createElement('div')
+          profileWrapper.classList.add(
+            'content__list',
+            'content__list--profile'
+          )
+
+          let profileTemplate = `
+              <div class="profile_profilepic">
+                <img src="../images/LogoOld.svg" />
+              </div>
+              <form>
+                <div class="form-group custom-file">
+                  <label class="custom-file-label" for="File">Change profile picture</label>
+                  <input class="custom-file-input" id="customFile" type="file" />
+                </div>
+                <div class="form-group">
+                  <input class="form-control" id="email" type="email" value="Email" />
+                </div>
+                <div class="form-group">
+                  <input class="form-control" id="username" type="text" value="Username" />
+                </div>
+                
+                <div class="form-group text-center">
+                  <input class="btn btn-success btn--profile" type="submit" value="Update profile" />
+                </div>
+              </form>
+            `
+          // change password template
+          // <div class="form-group">
+          //   <input class="form-control" id="oldPassword" type="password" placeholder="Old password"/>
+          // </div>
+          // <div class="form-group">
+          //   <input class="form-control" id="password" type="password" placeholder="New password"/>
+          // </div>
+          profileWrapper.innerHTML = profileTemplate
+          const profileList = document.querySelector(
+            '.content__wrapper--middle-middle-profile'
+          )
+          profileList.appendChild(profileWrapper)
         } else if (json['status'] == 'failed') {
           // build profile - error page with data
         }
