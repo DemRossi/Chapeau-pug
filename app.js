@@ -12,6 +12,7 @@ const passport = require('./passport/passport')
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 const apiLobbyRouter = require('./routes/api/v1/lobby')
+const gameRouter = require('./routes/api/v1/game')
 // const apiProfileRouter = require('./routes/api/v1/profile')
 
 const app = express()
@@ -45,6 +46,7 @@ app.use(
   passport.authenticate('jwt', { session: false }),
   apiLobbyRouter
 )
+app.use('/api/v1/game', gameRouter)
 // app.use(
 //   '/api/v1/profile',
 //   passport.authenticate('jwt', { session: false }),
