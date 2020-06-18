@@ -35,45 +35,63 @@ class Lobby {
         if (json['status'] == 'success') {
           // console.log(json)
           for (let i = 0; i < json.data.length; i++) {
-            // console.log(json.data[i].lobbyname)
+            // console.log(json.data[i])
             let lobbyWrapper = document.createElement('div')
             lobbyWrapper.classList.add('content__list', 'content__list--home')
             lobbyWrapper.dataset.id = json.data[i]._id
             let playersinside = json.data[i].playersinside.length
             // console.log(json.data[i])
-            let lobbyTemplate = `
-          <h2 class="content__list_name">${json.data[i].lobbyname}</h2>
-  
-          <div class="content__list_amountPlayers">
-            <h5>
-              <span class="content__list_amountPlayers_amount">${playersinside}</span>
-              /
-              <span class="content__list_amountPlayers_many">${json.data[i].playersamount}</span>
-              players inside
-            </h5>
-          </div>
-  
-          <div class="content__list_playersInside">
-            <h6 class="content__list_playersInside_peopleTitle">People in lobby:</h6>
-            <div class="content__list_profilepic_wrapper--small">
-              <div class="content__list_profilepic--small"></div>
-              <div class="content__list_profilepic--small"></div>
-              <div class="content__list_profilepic--small"></div>
-              <div class="content__list_profilepic--small"></div>
-              <div class="content__list_profilepic--small"></div>
-            </div>
-          </div>
-  
-          <div class="content__btn">
-            <a href="" data-id="${json.data[i]._id}" class="btn btn-success btn--join">Join</a>
-          </div>
-          `
-            lobbyWrapper.innerHTML = lobbyTemplate
+            let lobbyInfoTemplate = `
+              <h2 class="content__list_name">${json.data[i].lobbyname}</h2>
+
+              <div class="content__list_amountPlayers">
+                <h5>
+                  <span class="content__list_amountPlayers_amount">${playersinside}</span>
+                  /
+                  <span class="content__list_amountPlayers_many">${json.data[i].playersamount}</span>
+                  players inside
+                </h5>
+              </div>
+              <div class="content__list_playersInside">
+                <h6 class="content__list_playersInside_peopleTitle">People in lobby:</h6>
+                <div class="content__list_profilepic_wrapper--small picture__wrapper-${i}">
+
+                </div>
+              </div>
+              <div class="content__btn">
+                <a href="" data-id="${json.data[i]._id}" class="btn btn-success btn--join">Join</a>
+              </div>
+            `
+            lobbyWrapper.innerHTML = lobbyInfoTemplate
 
             const lobbyList = document.querySelector(
               '.content__wrapper--middle-middle'
             )
             lobbyList.appendChild(lobbyWrapper)
+            // console.log(json.data[i].playersinside.length)
+
+            if (json.data[i].playersinside.length > 0) {
+              // console.log(json.data[i].playersinside.length)
+              for (let p = 0; p < json.data[i].playersinside.length; p++) {
+                // console.log(json.data[i].playersinside[p].profilepic)
+                let img = document.createElement('img')
+                img.classList.add('content__list_profilepic--small')
+                img.src = json.data[i].playersinside[p].profilepic
+
+                let profilepicWrapper = document.querySelector(
+                  `.picture__wrapper-${i}`
+                )
+                profilepicWrapper.appendChild(img)
+              }
+            } else {
+              let message = document.createElement('p')
+              message.innerHTML = 'No players inside this lobby.'
+
+              let profilepicWrapper = document.querySelector(
+                `.picture__wrapper-${i}`
+              )
+              profilepicWrapper.appendChild(message)
+            }
           }
         } else if (json['status'] == 'failed') {
           // let lobbyWrapper = document.createElement('div')
