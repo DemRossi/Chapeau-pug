@@ -42,4 +42,12 @@ router.get(
     res.render('profile', { title: 'Chapeau - Profile' })
   }
 )
+/* GET game page. */
+router.get(
+  '/game',
+  // passport.authenticate('jwt', { session: false }),
+  (req, res, next) => {
+    res.render('game', { title: 'Chapeau - Game' })
+  }
+)
 module.exports = router

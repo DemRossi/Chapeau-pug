@@ -76,6 +76,7 @@ class User {
     let url = window.location.href.replace(/\/$/, '')
     let user_id = url.substr(url.lastIndexOf('/') + 1)
     console.log(user_id)
+    // https://cloudinary.com/documentation/node_image_and_video_upload
     console.log(
       'Will finalize this later, further research is needed. (cloudinary, fs, ...)'
     )

@@ -1,0 +1,95 @@
+.game__container {
+  width: 100%;
+  height: 92%;
+  //   background: #000;
+  display: grid;
+  grid-template-columns: auto 200px 200px 125px 125px 200px 125px 125px 200px 200px auto;
+  grid-template-rows: 1% 75px 75px auto 75px 1% auto;
+}
+.hat__wrapper {
+  grid-column: 5 / span 3;
+  grid-row: 4 / span 2;
+  background-image: url('../../../images/LogoOld.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.gamebtns {
+  grid-column: 5 / 8;
+  grid-row: 7 / 8;
+}
+.gameactions {
+  grid-column: 9 / 11;
+  grid-row: 7 / 8;
+}
+.playercard {
+  width: 200px;
+  height: 75px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+}
+.playerimage {
+  width: 70px;
+  height: 75px;
+  background-image: url('../../../images/LogoOld.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: 1px solid black;
+}
+.playerinfo {
+  width: 125px;
+  height: 75px;
+  border: 1px solid black;
+  padding-left: 0.5em;
+}
+.playerinfo__name {
+  margin: 0;
+  padding: 0;
+  padding-top: 5px;
+}
+.playerinfo__sticks-title {
+  margin: 0;
+  padding: 0;
+  font-size: 0.7em;
+}
+.playeramount__3-1 {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+.playeramount__3-2 {
+  grid-column: 10 / 11;
+  grid-row: 2 / 3;
+}
+.playeramount__4-1,
+.playeramount__5-1,
+.playeramount__6-1 {
+  grid-column: 2 / 3;
+  grid-row: 5 / 6;
+}
+.playeramount__4-2,
+.playeramount__6-3 {
+  grid-column: 6 / 7;
+  grid-row: 2 / 3;
+}
+.playeramount__4-3,
+.playeramount__5-4,
+.playeramount__6-5 {
+  grid-column: 10 / 11;
+  grid-row: 5 / 6;
+}
+.playeramount__5-2 {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+}
+.playeramount__5-3 {
+  grid-column: 9 / 10;
+  grid-row: 2 / 3;
+}
+.playeramount__6-2 {
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
+}
+.playeramount__6-4 {
+  grid-column: 9 / 10;
+  grid-row: 3 / 4;
+}
