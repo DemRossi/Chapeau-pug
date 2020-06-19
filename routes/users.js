@@ -20,5 +20,6 @@ router.get(
   // passport.authenticate('jwt', { session: false }),
   authController.getUserById
 )
+router.post('/profile/:id', authController.updateUserById)
 
 module.exports = router

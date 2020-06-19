@@ -147,7 +147,13 @@ let getUserById = (req, res) => {
   })
 }
 
+let updateUserById = (req, res) => {
+  let user_id = req.params.id
+  console.log(user_id)
+}
+
 module.exports.signup = signup
 module.exports.login = login
 module.exports.check = check
 module.exports.getUserById = getUserById
+module.exports.updateUserById = updateUserById

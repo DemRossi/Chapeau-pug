@@ -48,7 +48,7 @@ class User {
                 </div>
                 
                 <div class="form-group text-center">
-                  <input class="btn btn-success btn--profile" type="submit" value="Update profile" />
+                  <input class="btn btn-success btn--save-profile" type="submit" value="Update profile" />
                 </div>
               </form>
             `
@@ -71,5 +71,13 @@ class User {
       .catch((err) => {
         console.log(err.message)
       })
+  }
+  updateUserById() {
+    let url = window.location.href.replace(/\/$/, '')
+    let user_id = url.substr(url.lastIndexOf('/') + 1)
+    console.log(user_id)
+    console.log(
+      'Will finalize this later, further research is needed. (cloudinary, fs, ...)'
+    )
   }
 }
