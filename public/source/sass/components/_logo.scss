@@ -1,13 +1,12 @@
-.logo__wrapper{
-    width: 20%;
-    height: 75px;
-    color: #d6d6d6;
-    margin-left: 30px;
+.logo__wrapper {
+  width: 20%;
+  height: 75px;
+  color: $lightgrey;
+  margin-left: 30px;
 }
-.logo__img{
-    height: 75px;
-    background-image: url('../../../images/Logo.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    
+.logo__img {
+  height: 75px;
+  background-image: url('../../../images/Logo.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
