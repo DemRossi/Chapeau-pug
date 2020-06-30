@@ -14,6 +14,17 @@ class Lobby {
       if (json.action === 'addLobby') {
         appendLobby(json.data)
       }
+      // else if (json.action === 'addPlayer') {
+      //   console.log(json)
+      //   // console.log('new player added!')
+      //   let lobbyid = json.data.data._id
+      //   // console.log(lobbyid)
+      //   let joinedLobby = document.querySelector(`[data-id='${lobbyid}']`)
+      //   console.log(
+      //     joinedLobby.firstElementChild.nextElementSibling.nextElementSibling
+      //       .lastElementChild
+      //   )
+      // }
     })
   }
 
@@ -146,6 +157,9 @@ class Lobby {
           </div>
           <div class="content__list_amountWins">
               <h6><span class="content__list_amountWins_amount">${json.data.playersinside[i].gameswon}</span> games won</h6>
+          </div>
+          <div class="content__list_ready_wrapper">
+              <div class="content__list_unready"></div>
           </div>
         `
             playerWrapper.innerHTML = playerTemplate
@@ -308,8 +322,13 @@ class Lobby {
               .then((json) => {
                 if (json.status == 'success') {
                   // Let server know to add 1 to playersinside number on home
+                  // this.primus.write({
+                  //   action: 'addPlayer',
+                  //   data: json,
+                  // })
                   //redirect to /lobby/:id
                   window.location.href = `/lobby/${lobby_id}`
+                  // console.log(json)
                 }
               })
           }
@@ -373,11 +392,8 @@ let appendLobby = (json) => {
       <div class="content__list_playersInside">
           <h6 class="content__list_playersInside_peopleTitle">People in lobby:</h6>
           <div class="content__list_profilepic_wrapper--small">
-            <div class="content__list_profilepic--small"></div>
-            <div class="content__list_profilepic--small"></div>
-            <div class="content__list_profilepic--small"></div>
-            <div class="content__list_profilepic--small"></div>
-            <div class="content__list_profilepic--small"></div>
+            <img src="${json.data.lobby.playersinside[0].profilepic}" class="content__list_profilepic--small" >
+            
           </div>
         </div>
       <div class="content__btn">
