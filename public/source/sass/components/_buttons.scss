@@ -4,19 +4,28 @@
 .btn-success:hover {
   background-color: darken($color: $green, $amount: 5);
 }
-.btn-success:not(:disabled):not(.disabled):active {
+
+.btn-success:not(:disabled):not(:disabled):active {
   background-color: darken($color: $green, $amount: 10);
 }
 .btn-success:focus {
   background-color: darken($color: $green, $amount: 10);
 }
-.btn--new {
+.btn--new,
+.btn-warning {
   background-color: $yellow;
   color: white;
   border-radius: 5px;
   // border: none;
 }
-.btn--new:hover {
+.btn--new:hover,
+.btn-warning:hover {
+  color: white;
+}
+.btn-warning:not(:disabled):not(:disabled):active {
+  color: white;
+}
+.btn-warning:focus {
   color: white;
 }
 .btn--join {

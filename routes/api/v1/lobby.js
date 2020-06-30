@@ -6,6 +6,10 @@ const lobbyController = require('../../../controllers/api/v1/lobby')
 /* /api/v1/lobby */
 router.get('/', lobbyController.getAll)
 
+router.put('/ready', lobbyController.ready)
+
+// router.put('/cancel', lobbyController.cancel)
+
 router.get('/:id', lobbyController.getLobbyById)
 
 router.post('/', lobbyController.create)

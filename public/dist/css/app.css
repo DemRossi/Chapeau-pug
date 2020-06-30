@@ -26,18 +26,26 @@ form {
 .btn-success:hover {
   background-color: #1d9166; }
 
-.btn-success:not(:disabled):not(.disabled):active {
+.btn-success:not(:disabled):not(:disabled):active {
   background-color: #197b57; }
 
 .btn-success:focus {
   background-color: #197b57; }
 
-.btn--new {
+.btn--new,
+.btn-warning {
   background-color: #f2b90f;
   color: white;
   border-radius: 5px; }
 
-.btn--new:hover {
+.btn--new:hover,
+.btn-warning:hover {
+  color: white; }
+
+.btn-warning:not(:disabled):not(:disabled):active {
+  color: white; }
+
+.btn-warning:focus {
   color: white; }
 
 .btn--join {

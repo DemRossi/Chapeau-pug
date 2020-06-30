@@ -151,12 +151,63 @@ let leave = (req, res, next) => {
 
 let ready = (req, res, next) => {
   // console.log('ready!')
-  let lobbyid = req.params.id
-  let userid = req.params.uid
+  let lobbyid = req.body.lid
+  let userid = req.body.uid
+
+  Lobby.findOneAndUpdate(
+    { _id: lobbyid },
+    { $set: { 'playersinside.$[uid].ready': true } },
+    { arrayFilters: [{ 'uid.user_id': userid }], new: true },
+    (err, doc) => {
+      //handle error if there is any (don't block the thread!)
+      if (err) {
+        res.json({
+          status: 'error',
+          message: err.message,
+        })
+      }
+      //if no errors, go ahead and do your job!
+      if (!err) {
+        res.json({
+          status: 'success',
+          data: doc,
+        })
+      }
+    }
+  )
 }
+
+// let cancel = (req, res, next) => {
+//   // console.log('ready!')
+//   let lobbyid = req.body.lid
+//   let userid = req.body.uid
+
+//   Lobby.findOneAndUpdate(
+//     { _id: lobbyid },
+//     { $set: { 'playersinside.$[uid].ready': false } },
+//     { arrayFilters: [{ 'uid.user_id': userid }], new: true },
+//     (err, doc) => {
+//       //handle error if there is any (don't block the thread!)
+//       if (err) {
+//         res.json({
+//           status: 'error',
+//           message: err.message,
+//         })
+//       }
+//       //if no errors, go ahead and do your job!
+//       if (!err) {
+//         res.json({
+//           status: 'success',
+//           data: doc,
+//         })
+//       }
+//     }
+//   )
+// }
 module.exports.getAll = getAll
 module.exports.create = create
 module.exports.getLobbyById = getLobbyById
 module.exports.join = join
 module.exports.leave = leave
-// module.exports.ready = ready
+module.exports.ready = ready
+// module.exports.cancel = cancel
