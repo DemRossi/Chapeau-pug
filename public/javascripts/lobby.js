@@ -149,17 +149,32 @@ class Lobby {
           for (let i = 0; i < json.data.playersinside.length; i++) {
             let playerWrapper = document.createElement('div')
             playerWrapper.classList.add('content__list', 'content__list--lobby')
+            let readyClass = () => {
+              if (json.data.playersinside[i].ready) {
+                let classname = 'content__list_ready'
+                return classname
+              } else {
+                let classname = 'content__list_unready'
+                return classname
+              }
+            }
             let playerTemplate = `
           <div class="content__list_profilepic_wrapper--big content__list_profilepic--big"></div>
-          <h4 class="content__list_username">${json.data.playersinside[i].username}</h4>
+          <h4 class="content__list_username">${
+            json.data.playersinside[i].username
+          }</h4>
           <div class="content__list_amountPlays">
-              <h6><span class="content__list_amountPlays_amount">${json.data.playersinside[i].gamesplayed}</span> games played</h6>
+              <h6><span class="content__list_amountPlays_amount">${
+                json.data.playersinside[i].gamesplayed
+              }</span> games played</h6>
           </div>
           <div class="content__list_amountWins">
-              <h6><span class="content__list_amountWins_amount">${json.data.playersinside[i].gameswon}</span> games won</h6>
+              <h6><span class="content__list_amountWins_amount">${
+                json.data.playersinside[i].gameswon
+              }</span> games won</h6>
           </div>
           <div class="content__list_ready_wrapper">
-              <div class="content__list_unready"></div>
+              <div class="${readyClass()}"></div>
           </div>
         `
             playerWrapper.innerHTML = playerTemplate
@@ -225,6 +240,7 @@ class Lobby {
             profilepic: localStorage.getItem('profilepic'),
             gamesplayed: localStorage.getItem('gamesplayed'), // 0,
             gameswon: localStorage.getItem('gameswon'), // 0,
+            ready: false,
           },
         ],
       }),
@@ -362,6 +378,43 @@ class Lobby {
               // Let server know reduce 1 to playersinside number on home
               // Redirect to /
               window.location.href = `/`
+            }
+          })
+        e.preventDefault()
+      })
+  }
+  ready() {
+    // console.log('Ready!')
+    let ready = document
+      .querySelector('.btn--ready')
+      .addEventListener('click', (e) => {
+        let user_id = localStorage.getItem('user_id')
+
+        /* remove optional end / of url*/
+        let url = window.location.href.replace(/\/$/, '')
+        let lobby_id = url.substr(url.lastIndexOf('/') + 1)
+
+        // Start leave fetch
+        fetch(``, {
+          method: 'put',
+          headers: {
+            Accept: 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+          },
+          body: JSON.stringify({
+            // Put data in json
+            uid: user_id,
+            lid: lobby_id,
+          }),
+        })
+          .then((response) => {
+            return response.json()
+          })
+          .then((json) => {
+            if (json.status == 'success') {
+              // Show ready icon
+              // Let server know to show icon
             }
           })
         e.preventDefault()

@@ -1,1 +1,2 @@
 lobby.leave()
+lobby.ready()

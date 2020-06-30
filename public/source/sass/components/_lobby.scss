@@ -1,39 +1,60 @@
-.content__list--lobby{
-    height: 200px;
-    grid-template-columns: 5% 25% 5% 35% 25% 5%;
-    grid-template-rows: 20% 20% 20% 20% 20%;
+.content__list--lobby {
+  height: 200px;
+  grid-template-columns: 5% 25% 5% 35% 25% 5%;
+  grid-template-rows: 20% 20% 20% 20% 20%;
 }
-.content__list_profilepic_wrapper--big{
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: span 3;
-    background-color: $lightgrey;
-    // border: 1px solid $darkgrey;
+.content__list_profilepic_wrapper--big {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: span 3;
+  background-color: $lightgrey;
+  // border: 1px solid $darkgrey;
 }
-.content__list_profilepic--big{
-    border-radius: 5px;
-    background-image: url('../../../images/LogoOld.svg');
-    background-repeat: no-repeat;
-    background-position: center center;
+.content__list_profilepic--big {
+  border-radius: 5px;
+  background-image: url('../../../images/LogoOld.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
 }
-.content__list_username{
-    grid-column-start: 4;
-    grid-column-end: 5;
-    grid-row-start: 2;
-    grid-row-end: 3;
+.content__list_username {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
-.content__list_amountPlays{
-    grid-column-start: 4;
-    grid-column-end: 5;
-    grid-row-start: 3;
-    grid-row-end: 4;
-    padding-left: 10px;
+.content__list_amountPlays {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  padding-left: 10px;
 }
-.content__list_amountWins{
-    grid-column-start: 4;
-    grid-column-end: 5;
-    grid-row-start: 4;
-    grid-row-end: 5;
-    padding-left: 10px;
+.content__list_amountWins {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  padding-left: 10px;
+}
+.content__list_ready_wrapper {
+  grid-column: 5 / 6;
+  grid-row: 2 / span 3;
+  //   padding-top: 10px;
+}
+.content__list_ready {
+  width: 75%;
+  height: 100%;
+  background-image: url('../../../images/Ready.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin: 0 auto;
+}
+.content__list_unready {
+  width: 75%;
+  height: 100%;
+  background-image: url('../../../images/Unready.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin: 0 auto;
 }

@@ -91,6 +91,7 @@ let join = (req, res, next) => {
     profilepic: profilepic,
     gamesplayed: gamesplayed, // 0
     gameswon: gameswon, // 0
+    ready: false,
   }
   //search the specific message by it's id and update it
   Lobby.findOneAndUpdate(
@@ -148,8 +149,14 @@ let leave = (req, res, next) => {
   )
 }
 
+let ready = (req, res, next) => {
+  // console.log('ready!')
+  let lobbyid = req.params.id
+  let userid = req.params.uid
+}
 module.exports.getAll = getAll
 module.exports.create = create
 module.exports.getLobbyById = getLobbyById
 module.exports.join = join
 module.exports.leave = leave
+// module.exports.ready = ready
