@@ -20,6 +20,11 @@ form {
   width: 70%;
   margin: 40px auto; }
 
+.btn-success,
+.btn-warning,
+.btn-danger {
+  min-width: 100px; }
+
 .btn-success {
   background-color: #21a675; }
 
@@ -54,6 +59,9 @@ form {
 .btn--back {
   color: white;
   border-radius: 5px; }
+
+.noShow {
+  display: none; }
 
 .scrollbar {
   padding-right: 15px; }

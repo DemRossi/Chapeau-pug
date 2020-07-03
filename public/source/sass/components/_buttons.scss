@@ -1,3 +1,8 @@
+.btn-success,
+.btn-warning,
+.btn-danger {
+  min-width: 100px;
+}
 .btn-success {
   background-color: $green;
 }
@@ -35,4 +40,7 @@
   color: white;
   border-radius: 5px;
   // border: none;
+}
+.noShow {
+  display: none;
 }

@@ -141,14 +141,18 @@ class Lobby {
         return result.json()
       })
       .then((json) => {
-        // console.log(json)
+        console.log(json)
         if (json['status'] == 'success') {
           let lobbyname = json.data.lobbyname
           document.querySelector('.lobbyname').innerHTML = lobbyname
 
           for (let i = 0; i < json.data.playersinside.length; i++) {
             let playerWrapper = document.createElement('div')
-            playerWrapper.classList.add('content__list', 'content__list--lobby')
+            playerWrapper.classList.add(
+              'content__list',
+              'content__list--lobby',
+              `player-${json.data.playersinside[i].user_id}`
+            )
             let readyClass = () => {
               if (json.data.playersinside[i].ready) {
                 let classname = 'content__list_ready'
@@ -413,65 +417,83 @@ class Lobby {
             return response.json()
           })
           .then((json) => {
-            console.log(json)
+            // console.log(json)
             if (json.status == 'success') {
               // change ready btn to cancel btn
-              console.log(e.target)
-              e.target.classList.remove('btn-success', 'btn--ready')
-              e.target.classList.add('btn-warning', 'btn--cancel')
-              e.target.innerHTML = 'Cancel'
+              e.target.classList.add('noShow')
+              document.querySelector('.btn--cancel').classList.remove('noShow')
+
               // Show ready icon
+              document
+                .querySelector(`.player-${user_id}`)
+                .lastElementChild.firstElementChild.classList.remove(
+                  'content__list_unready'
+                )
+              document
+                .querySelector(`.player-${user_id}`)
+                .lastElementChild.firstElementChild.classList.add(
+                  'content__list_ready'
+                )
+
               // Let server know to change icon
             }
           })
         e.preventDefault()
       })
   }
-  // cancelReady() {
-  //   console.log('Cancel!!')
-  //   let cancelReady = document
-  //     .querySelector('.btn--cancel')
-  //     .addEventListener('click', (e) => {
-  //       let user_id = localStorage.getItem('user_id')
+  cancelReady() {
+    // console.log('Cancel!!')
+    let cancelReady = document
+      .querySelector('.btn--cancel')
+      .addEventListener('click', (e) => {
+        let user_id = localStorage.getItem('user_id')
 
-  //       /* remove optional end / of url*/
-  //       let url = window.location.href.replace(/\/$/, '')
-  //       let lobby_id = url.substr(url.lastIndexOf('/') + 1)
+        /* remove optional end / of url*/
+        let url = window.location.href.replace(/\/$/, '')
+        let lobby_id = url.substr(url.lastIndexOf('/') + 1)
 
-  //       // Start leave fetch
-  //       fetch(`/api/v1/lobby/cancel`, {
-  //         method: 'put',
-  //         headers: {
-  //           Accept: 'application/json, text/plain, */*',
-  //           'Content-Type': 'application/json',
-  //           Authorization: 'Bearer ' + localStorage.getItem('token'),
-  //         },
-  //         body: JSON.stringify({
-  //           // Put data in json
-  //           uid: user_id,
-  //           lid: lobby_id,
-  //         }),
-  //       })
-  //         .then((response) => {
-  //           // console.log(response)
-  //           return response.json()
-  //         })
-  //         .then((json) => {
-  //           console.log(json)
-  //           if (json.status == 'success') {
-  //             // change ready btn to cancel btn
-  //             console.log(e.target)
-  //             e.target.classList.remove('btn-warning', 'btn--cancel')
-  //             e.target.classList.add('btn-success', 'btn--ready')
-
-  //             e.target.innerHTML = 'Ready Up'
-  //             // Show ready icon
-  //             // Let server know to change icon
-  //           }
-  //         })
-  //       e.preventDefault()
-  //     })
-  // }
+        // Start leave fetch
+        fetch(`/api/v1/lobby/cancel`, {
+          method: 'put',
+          headers: {
+            Accept: 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+          },
+          body: JSON.stringify({
+            // Put data in json
+            uid: user_id,
+            lid: lobby_id,
+          }),
+        })
+          .then((response) => {
+            // console.log(response)
+            return response.json()
+          })
+          .then((json) => {
+            console.log(json)
+            if (json.status == 'success') {
+              // change cancel btn to ready btn
+              console.log(e.target)
+              e.target.classList.add('noShow')
+              document.querySelector('.btn--ready').classList.remove('noShow')
+              // Show unready icon
+              document
+                .querySelector(`.player-${user_id}`)
+                .lastElementChild.firstElementChild.classList.remove(
+                  'content__list_ready'
+                )
+              document
+                .querySelector(`.player-${user_id}`)
+                .lastElementChild.firstElementChild.classList.add(
+                  'content__list_unready'
+                )
+              // Let server know to change icon
+            }
+          })
+        e.preventDefault()
+      })
+  }
 }
 
 // append lobby

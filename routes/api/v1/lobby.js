@@ -8,7 +8,7 @@ router.get('/', lobbyController.getAll)
 
 router.put('/ready', lobbyController.ready)
 
-// router.put('/cancel', lobbyController.cancel)
+router.put('/cancel', lobbyController.cancel)
 
 router.get('/:id', lobbyController.getLobbyById)
 
