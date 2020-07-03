@@ -145,6 +145,7 @@ class Lobby {
         if (json['status'] == 'success') {
           let lobbyname = json.data.lobbyname
           document.querySelector('.lobbyname').innerHTML = lobbyname
+          let user_id = localStorage.getItem('user_id')
 
           for (let i = 0; i < json.data.playersinside.length; i++) {
             let playerWrapper = document.createElement('div')
@@ -153,6 +154,7 @@ class Lobby {
               'content__list--lobby',
               `player-${json.data.playersinside[i].user_id}`
             )
+            // Check if json.data.playersinside[i].ready is true so the right class is assigned
             let readyClass = () => {
               if (json.data.playersinside[i].ready) {
                 let classname = 'content__list_ready'
@@ -161,6 +163,15 @@ class Lobby {
                 let classname = 'content__list_unready'
                 return classname
               }
+            }
+            // if playersinside[i].user_id is the same as user_id in localstorage
+            // and json.data.playersinside[i].ready is true, change ready up btn to cancel btn
+            if (
+              json.data.playersinside[i].user_id == user_id &&
+              json.data.playersinside[i].ready
+            ) {
+              document.querySelector('.btn--ready').classList.add('noShow')
+              document.querySelector('.btn--cancel').classList.remove('noShow')
             }
             let playerTemplate = `
           <div class="content__list_profilepic_wrapper--big content__list_profilepic--big"></div>
@@ -471,12 +482,13 @@ class Lobby {
             return response.json()
           })
           .then((json) => {
-            console.log(json)
+            // console.log(json)
             if (json.status == 'success') {
               // change cancel btn to ready btn
-              console.log(e.target)
+              // console.log(e.target)
               e.target.classList.add('noShow')
               document.querySelector('.btn--ready').classList.remove('noShow')
+
               // Show unready icon
               document
                 .querySelector(`.player-${user_id}`)
