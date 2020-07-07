@@ -52,7 +52,7 @@ class Lobby {
         } else if (json['status'] == 'failed') {
           // Show error message
           let lobbyTemplate = `
-        <h2 class="content__list_error">${json.message}</h2>
+        <h2 class="content__list_error no__lobbies">${json.message}</h2>
         `
           const lobbyList = document.querySelector(
             '.content__wrapper--middle-middle'
@@ -480,13 +480,21 @@ let appendLobby = (json) => {
       </div>
     `
     lobbyWrapper.innerHTML = lobbyTemplate
+
     const lobbyList = document.querySelector('.content__wrapper--middle-middle')
+
+    // Check if no lobbie message exists, if so remove on appending first lobby
+    if (document.querySelector('.no__lobbies')) {
+      let noLobbies = document.querySelector('.no__lobbies')
+      console.log('message exists!!!')
+      lobbyList.removeChild(noLobbies)
+    }
+
     lobbyList.appendChild(lobbyWrapper)
 
     if (json.playersinside.length > 0) {
-      console.log(json.playersinside.length)
+      // If there are players inside, add their picture to the lobby at homepage
       for (let p = 0; p < json.playersinside.length; p++) {
-        // console.log(json.data[i].playersinside[p].profilepic)
         let img = document.createElement('img')
         img.classList.add('content__list_profilepic--small')
         img.src = json.playersinside[p].profilepic
@@ -496,7 +504,7 @@ let appendLobby = (json) => {
         profilepicWrapper.appendChild(img)
       }
     } else {
-      console.log(json.playersinside.length)
+      // else show no players message
       let message = document.createElement('p')
       message.innerHTML = 'No players inside this lobby.'
       let profilepicWrapper = document.querySelector(
