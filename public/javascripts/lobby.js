@@ -15,18 +15,9 @@ class Lobby {
       if (json.action === 'addLobby') {
         // console.log(json.data)
         appendLobby(json.data)
+      } else if (json.action === 'addPlayer') {
+        addPlayer(json.data.data)
       }
-      // else if (json.action === 'addPlayer') {
-      //   console.log(json)
-      //   // console.log('new player added!')
-      //   let lobbyid = json.data.data._id
-      //   // console.log(lobbyid)
-      //   let joinedLobby = document.querySelector(`[data-id='${lobbyid}']`)
-      //   console.log(
-      //     joinedLobby.firstElementChild.nextElementSibling.nextElementSibling
-      //       .lastElementChild
-      //   )
-      // }
     })
   }
 
@@ -296,11 +287,11 @@ class Lobby {
               })
               .then((json) => {
                 if (json.status == 'success') {
-                  // Let server know to add 1 to playersinside number on home
-                  // this.primus.write({
-                  //   action: 'addPlayer',
-                  //   data: json,
-                  // })
+                  // Let server know to add picture on home
+                  this.primus.write({
+                    action: 'addPlayer',
+                    data: json,
+                  })
                   //redirect to /lobby/:id
                   window.location.href = `/lobby/${lobby_id}`
                   // console.log(json)
@@ -334,7 +325,8 @@ class Lobby {
           })
           .then((json) => {
             if (json.status == 'success') {
-              // Let server know reduce 1 to playersinside number on home
+              // Let server know reduce picture on home
+
               // Redirect to /
               window.location.href = `/`
             }
@@ -456,7 +448,11 @@ class Lobby {
 let appendLobby = (json) => {
   try {
     let lobbyWrapper = document.createElement('div')
-    lobbyWrapper.classList.add('content__list', 'content__list--home')
+    lobbyWrapper.classList.add(
+      'content__list',
+      'content__list--home',
+      `lobby--${json._id}`
+    )
     lobbyWrapper.dataset.id = json._id
     let playersinside = json.playersinside.length
     let lobbyTemplate = `
@@ -483,7 +479,7 @@ let appendLobby = (json) => {
 
     const lobbyList = document.querySelector('.content__wrapper--middle-middle')
 
-    // Check if no lobbie message exists, if so remove on appending first lobby
+    // Check if no-lobby message exists, if so remove on appending first lobby
     if (document.querySelector('.no__lobbies')) {
       let noLobbies = document.querySelector('.no__lobbies')
       console.log('message exists!!!')
@@ -491,30 +487,65 @@ let appendLobby = (json) => {
     }
 
     lobbyList.appendChild(lobbyWrapper)
-
-    if (json.playersinside.length > 0) {
-      // If there are players inside, add their picture to the lobby at homepage
-      for (let p = 0; p < json.playersinside.length; p++) {
-        let img = document.createElement('img')
-        img.classList.add('content__list_profilepic--small')
-        img.src = json.playersinside[p].profilepic
-        let profilepicWrapper = document.querySelector(
-          `.picture__wrapper-${json._id}`
-        )
-        profilepicWrapper.appendChild(img)
-      }
-    } else {
-      // else show no players message
-      let message = document.createElement('p')
-      message.innerHTML = 'No players inside this lobby.'
-      let profilepicWrapper = document.querySelector(
-        `.picture__wrapper-${json._id}`
-      )
-      profilepicWrapper.appendChild(message)
-    }
+    addPicture(json)
+    // if (json.playersinside.length > 0) {
+    //   // If there are players inside, add their picture to the lobby at homepage
+    //   for (let p = 0; p < json.playersinside.length; p++) {
+    //     let img = document.createElement('img')
+    //     img.classList.add('content__list_profilepic--small')
+    //     img.src = json.playersinside[p].profilepic
+    //     let profilepicWrapper = document.querySelector(
+    //       `.picture__wrapper-${json._id}`
+    //     )
+    //     profilepicWrapper.appendChild(img)
+    //   }
+    // } else {
+    //   // else show no players message
+    //   let message = document.createElement('p')
+    //   message.innerHTML = 'No players inside this lobby.'
+    //   let profilepicWrapper = document.querySelector(
+    //     `.picture__wrapper-${json._id}`
+    //   )
+    //   profilepicWrapper.appendChild(message)
+    // }
   } catch (e) {
     // Return when lobby doesn't need to append
     // console.log(e)
     return
+  }
+}
+let addPlayer = (json) => {
+  // console.log(json)
+  // console.log('new player added!')
+  let lobbyid = json._id
+  // console.log(lobbyid)
+  let joinedLobby = document.querySelector(`.picture__wrapper-${lobbyid}`)
+  // console.log(joinedLobby)
+  // remove previous pictures
+  joinedLobby.querySelectorAll('*').forEach((n) => n.remove())
+  // Add new pictures
+  addPicture(json)
+}
+
+let addPicture = (json) => {
+  if (json.playersinside.length > 0) {
+    // If there are players inside, add their picture to the lobby at homepage
+    for (let p = 0; p < json.playersinside.length; p++) {
+      let img = document.createElement('img')
+      img.classList.add('content__list_profilepic--small')
+      img.src = json.playersinside[p].profilepic
+      let profilepicWrapper = document.querySelector(
+        `.picture__wrapper-${json._id}`
+      )
+      profilepicWrapper.appendChild(img)
+    }
+  } else {
+    // else show no players message
+    let message = document.createElement('p')
+    message.innerHTML = 'No players inside this lobby.'
+    let profilepicWrapper = document.querySelector(
+      `.picture__wrapper-${json._id}`
+    )
+    profilepicWrapper.appendChild(message)
   }
 }
