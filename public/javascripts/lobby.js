@@ -3,26 +3,26 @@ class Lobby {
   constructor() {
     let url = 'http://localhost:3000'
 
-    this.primus = Primus.connect(url, {
-      reconnect: {
-        max: Infinity, // Number: The max delay before we try to reconnect.
-        min: 500, // Number: The minimum delay before we try reconnect.
-        retries: 10, // Number: How many times we should try to reconnect.
-      },
-    })
-    this.primus.on('data', (json) => {
-      // console.log(json.data)
-      if (json.action === 'addLobby') {
-        // console.log(json.data)
-        appendLobby(json.data)
-      }
-      if (json.action === 'addPlayer') {
-        changePlayersInLobby(json.data.data)
-      }
-      if (json.action === 'removePlayer') {
-        changePlayersInLobby(json.data.data)
-      }
-    })
+    //   this.primus = Primus.connect(url, {
+    //     reconnect: {
+    //       max: Infinity, // Number: The max delay before we try to reconnect.
+    //       min: 500, // Number: The minimum delay before we try reconnect.
+    //       retries: 10, // Number: How many times we should try to reconnect.
+    //     },
+    //   })
+    //   this.primus.on('data', (json) => {
+    //     // console.log(json.data)
+    //     if (json.action === 'addLobby') {
+    //       // console.log(json.data)
+    //       appendLobby(json.data)
+    //     }
+    //     if (json.action === 'addPlayer') {
+    //       changePlayersInLobby(json.data.data)
+    //     }
+    //     if (json.action === 'removePlayer') {
+    //       changePlayersInLobby(json.data.data)
+    //     }
+    //   })
   }
 
   // GET all lobbies
@@ -205,10 +205,10 @@ class Lobby {
         if (json.status == 'success') {
           // console.log(json.data.lobby)
           // Let server know a Lobby is created
-          this.primus.write({
-            action: 'addLobby',
-            data: json.data.lobby,
-          })
+          // this.primus.write({
+          //   action: 'addLobby',
+          //   data: json.data.lobby,
+          // })
 
           // take lobby id
           let lobby_id = json.data.lobby._id
@@ -292,10 +292,11 @@ class Lobby {
               .then((json) => {
                 if (json.status == 'success') {
                   // Let server know to add picture on home
-                  this.primus.write({
-                    action: 'addPlayer',
-                    data: json,
-                  })
+                  // this.primus.write({
+                  //   action: 'addPlayer',
+                  //   data: json,
+                  // })
+
                   //redirect to /lobby/:id
                   window.location.href = `/lobby/${lobby_id}`
                   // console.log(json)
@@ -327,17 +328,17 @@ class Lobby {
           .then((response) => {
             return response.json()
           })
-          .then((json) => {
-            console.log(json)
-            if (json.status == 'success') {
-              // Let server know reduce picture on home
-              this.primus.write({
-                action: 'removePlayer',
-                data: json,
-              })
-              return json
-            }
-          })
+          // .then((json) => {
+          //   console.log(json)
+          //   if (json.status == 'success') {
+          //     // Let server know reduce picture on home
+          //     this.primus.write({
+          //       action: 'removePlayer',
+          //       data: json,
+          //     })
+          //     return json
+          //   }
+          // })
           .then((json) => {
             if (json.status == 'success') {
               // Redirect to /
