@@ -24,6 +24,7 @@
     "passport-local-mongoose": "^6.0.1",
     "pug": "^2.0.4",
     "serve-favicon": "^2.5.0",
+    "socket.io": "^2.3.0",
     "ws": "^7.2.3"
   },
   "devDependencies": {
