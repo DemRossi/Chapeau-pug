@@ -223,14 +223,7 @@ class Lobby {
           let lobbyData = json.data.lobby
           socket.emit('addLobby', lobbyData)
 
-          // socket.on('addLobby', (lobbyData) => {
-          //   console.log(lobbyData)
-          // })
-
-          // this.primus.write({
-          //   action: 'addLobby',
-          //   data: json.data.lobby,
-          // })
+          // TODO: Make socket room and put owner in it
 
           // take lobby id
           let lobby_id = json.data.lobby._id
@@ -313,11 +306,9 @@ class Lobby {
               })
               .then((json) => {
                 if (json.status == 'success') {
-                  // Let server know to add picture on home
-                  // this.primus.write({
-                  //   action: 'addPlayer',
-                  //   data: json,
-                  // })
+                  // TODO: Let socket know to add picture on home
+
+                  // TODO: Join socket room
 
                   //redirect to /lobby/:id
                   window.location.href = `/lobby/${lobby_id}`
@@ -363,6 +354,10 @@ class Lobby {
           // })
           .then((json) => {
             if (json.status == 'success') {
+              // TODO: Let socket know reduce picture on home
+
+              // TODO: Leave socket room
+
               // Redirect to /
               window.location.href = `/`
             }
@@ -418,7 +413,7 @@ class Lobby {
                   'content__list_ready'
                 )
 
-              // Let server know to change icon
+              // TODO: Let socket know to change icon
             }
           })
         e.preventDefault()
@@ -472,7 +467,7 @@ class Lobby {
                 .lastElementChild.firstElementChild.classList.add(
                   'content__list_unready'
                 )
-              // Let server know to change icon
+              // TODO: Let socket know to change icon
             }
           })
         e.preventDefault()
@@ -524,26 +519,6 @@ let appendLobby = (json) => {
 
     lobbyList.appendChild(lobbyWrapper)
     addPicture(json)
-    // if (json.playersinside.length > 0) {
-    //   // If there are players inside, add their picture to the lobby at homepage
-    //   for (let p = 0; p < json.playersinside.length; p++) {
-    //     let img = document.createElement('img')
-    //     img.classList.add('content__list_profilepic--small')
-    //     img.src = json.playersinside[p].profilepic
-    //     let profilepicWrapper = document.querySelector(
-    //       `.picture__wrapper-${json._id}`
-    //     )
-    //     profilepicWrapper.appendChild(img)
-    //   }
-    // } else {
-    //   // else show no players message
-    //   let message = document.createElement('p')
-    //   message.innerHTML = 'No players inside this lobby.'
-    //   let profilepicWrapper = document.querySelector(
-    //     `.picture__wrapper-${json._id}`
-    //   )
-    //   profilepicWrapper.appendChild(message)
-    // }
   } catch (e) {
     // Return when lobby doesn't need to append
     // console.log(e)
