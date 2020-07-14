@@ -15,8 +15,12 @@ class Lobby {
       if (json.action === 'addLobby') {
         // console.log(json.data)
         appendLobby(json.data)
-      } else if (json.action === 'addPlayer') {
-        addPlayer(json.data.data)
+      }
+      if (json.action === 'addPlayer') {
+        changePlayersInLobby(json.data.data)
+      }
+      if (json.action === 'removePlayer') {
+        changePlayersInLobby(json.data.data)
       }
     })
   }
@@ -324,9 +328,18 @@ class Lobby {
             return response.json()
           })
           .then((json) => {
+            console.log(json)
             if (json.status == 'success') {
               // Let server know reduce picture on home
-
+              this.primus.write({
+                action: 'removePlayer',
+                data: json,
+              })
+              return json
+            }
+          })
+          .then((json) => {
+            if (json.status == 'success') {
               // Redirect to /
               window.location.href = `/`
             }
@@ -514,7 +527,7 @@ let appendLobby = (json) => {
     return
   }
 }
-let addPlayer = (json) => {
+let changePlayersInLobby = (json) => {
   // console.log(json)
   // console.log('new player added!')
   let lobbyid = json._id

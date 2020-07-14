@@ -6,6 +6,7 @@ let go = (server) => {
   })
   primus.on('connection', (spark) => {
     console.log('Received spark!!!')
+    // console.log(spark.id)
     spark.on('data', (data) => {
       console.log(data)
       console.log('Backend received data!!!!')
