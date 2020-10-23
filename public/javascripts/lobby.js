@@ -1,6 +1,4 @@
 // CLIENT
-const socket = io()
-
 class Lobby {
   constructor() {
     let url = 'http://localhost:3000'
@@ -56,25 +54,12 @@ class Lobby {
           )
           lobbyList.innerHTML = lobbyTemplate
         }
-        // Send welcome message with WS
-        socket.on('message', (message) => {
-          console.log(message)
-        })
       })
       .catch((err) => {
         console.log('error!!!')
         console.log(err)
         // something wrong happend page
       })
-  }
-
-  // Autoload newly recieved lobbies from sockets when on the index page
-  autoloadNewLobbies() {
-    // update home on new lobby
-    socket.on('updateHome', function (lobbyData) {
-      // console.log(lobbyData)
-      appendLobby(lobbyData)
-    })
   }
 
   // GET lobby by id
@@ -219,14 +204,7 @@ class Lobby {
       .then((json) => {
         if (json.status == 'success') {
           // console.log(json.data.lobby)
-          // Send lobby data to sockets
-          let lobbyData = json.data.lobby
-          socket.emit('addLobby', lobbyData)
-
-          // socket.on('addLobby', (lobbyData) => {
-          //   console.log(lobbyData)
-          // })
-
+          // Let server know a Lobby is created
           // this.primus.write({
           //   action: 'addLobby',
           //   data: json.data.lobby,
